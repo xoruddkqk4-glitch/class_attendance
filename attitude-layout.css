@@ -1,0 +1,16 @@
+/* 학습 태도 기록과 자리배치에 집중할 수 있도록 수업 화면의 여백을 재구성합니다. */
+#lesson .lesson-toolbar{margin-bottom:16px}
+#lesson .status-controls{min-width:max-content}
+#lesson .status-controls button{white-space:nowrap}
+#lesson .status-controls button.active{background:#fff;color:#4f60e8;box-shadow:0 1px 5px #3341a829}
+#lesson .seating-card{min-height:clamp(580px,72vh,820px);padding:22px 42px!important}
+#lesson .seating-grid{grid-auto-rows:clamp(62px,7.2vh,82px)!important;gap:clamp(13px,1.2vw,22px)!important;align-content:center!important}
+#lesson .seat,#lesson .student-card{height:clamp(62px,7.2vh,82px)!important;min-height:clamp(62px,7.2vh,82px)!important}
+#lesson .student-number{font-size:12px}
+#lesson .student-name{font-size:14px}
+#lesson:fullscreen{overflow:auto;background:#f5f7fb;padding:24px}
+#lesson:fullscreen .page-heading,#lesson:fullscreen .lesson-toolbar{max-width:1500px;margin-left:auto;margin-right:auto}
+#lesson:fullscreen .seating-card{max-width:1500px;margin:0 auto;min-height:calc(100vh - 190px)}
+#lesson:fullscreen .seating-grid{grid-auto-rows:minmax(76px,1fr)!important;gap:22px!important}
+#lesson:fullscreen .seat,#lesson:fullscreen .student-card{height:76px!important;min-height:76px!important}
+@media(max-width:820px){#lesson .seating-card{padding:14px!important;min-height:500px}#lesson .seating-grid{grid-auto-rows:54px!important;gap:8px!important}}

@@ -3,7 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const root = __dirname;
 const types = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8'};
-http.createServer((req,res)=>{
+http.createServer(async (req,res)=>{
+  if (req.method === 'POST' && req.url === '/export.xlsx') {
+    let body = '';
+    for await (const chunk of req) body += chunk;
+    try {
+      const { buildAttendanceWorkbook } = await import('./excel-export.mjs');
+      const bytes = await buildAttendanceWorkbook(JSON.parse(body));
+      res.writeHead(200, { 'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'Content-Disposition': 'attachment; filename="attendance-records.xlsx"' });
+      return res.end(bytes);
+    } catch (error) { res.writeHead(500); return res.end('Excel export failed'); }
+  }
   const requested = req.url === '/' ? '/index.html' : decodeURIComponent(req.url.split('?')[0]);
   const file = path.resolve(root, `.${requested}`);
   if (!file.startsWith(root)) { res.writeHead(403); return res.end('Forbidden'); }
