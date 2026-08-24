@@ -1,0 +1,2 @@
+/* The dashboard seating editor always uses the teacher-facing orientation. */
+.content-card:has(#adminGrid){display:flex;flex-direction:column}.content-card:has(#adminGrid) .formation-options{order:1}.content-card:has(#adminGrid) #adminGrid{order:2}.content-card:has(#adminGrid) .teacher-desk{order:3;margin:14px auto 0!important}.content-card:has(#adminGrid) #saveLayoutButton{order:4}.content-card:has(#adminGrid) #adminGrid{transform:none!important;direction:ltr!important}.content-card:has(#adminGrid) #adminGrid .student-card{transform:none!important}
