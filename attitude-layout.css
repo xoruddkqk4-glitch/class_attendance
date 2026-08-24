@@ -3,14 +3,27 @@
 #lesson .status-controls{min-width:max-content}
 #lesson .status-controls button{white-space:nowrap}
 #lesson .status-controls button.active{background:#fff;color:#4f60e8;box-shadow:0 1px 5px #3341a829}
+#localSaveButton{background:#5969ea!important;border-color:#5969ea!important;color:#fff!important;box-shadow:0 3px 9px #5969ea31}
+#localSaveButton:hover{background:#4d5ddd!important}
 #lesson .seating-card{min-height:clamp(580px,72vh,820px);padding:22px 42px!important}
 #lesson .seating-grid{grid-auto-rows:clamp(62px,7.2vh,82px)!important;gap:clamp(13px,1.2vw,22px)!important;align-content:center!important}
 #lesson .seat,#lesson .student-card{height:clamp(62px,7.2vh,82px)!important;min-height:clamp(62px,7.2vh,82px)!important}
 #lesson .student-number{font-size:12px}
 #lesson .student-name{font-size:14px}
-#lesson:fullscreen{overflow:auto;background:#f5f7fb;padding:24px}
-#lesson:fullscreen .page-heading,#lesson:fullscreen .lesson-toolbar{max-width:1500px;margin-left:auto;margin-right:auto}
-#lesson:fullscreen .seating-card{max-width:1500px;margin:0 auto;min-height:calc(100vh - 190px)}
-#lesson:fullscreen .seating-grid{grid-auto-rows:minmax(76px,1fr)!important;gap:22px!important}
-#lesson:fullscreen .seat,#lesson:fullscreen .student-card{height:76px!important;min-height:76px!important}
+#lesson:fullscreen{overflow:auto;background:#f5f7fb;padding:16px 24px}
+#lesson:fullscreen .page-heading{display:none}
+#lesson:fullscreen .lesson-toolbar{max-width:1600px;margin:0 auto 12px}
+#lesson:fullscreen .seating-card{max-width:1600px;margin:0 auto;min-height:calc(100vh - 108px);padding:22px 46px!important}
+#lesson:fullscreen .seating-grid{grid-auto-rows:minmax(90px,1fr)!important;gap:26px!important}
+#lesson:fullscreen .seat,#lesson:fullscreen .student-card{height:90px!important;min-height:90px!important}
+#lesson:fullscreen .student-number{font-size:13px}
+#lesson:fullscreen .student-name{font-size:16px}
 @media(max-width:820px){#lesson .seating-card{padding:14px!important;min-height:500px}#lesson .seating-grid{grid-auto-rows:54px!important;gap:8px!important}}
+
+.attitude-feedback{position:fixed;z-index:1000;left:50%;bottom:28px;transform:translateX(-50%);padding:13px 20px;border-radius:999px;background:#1d2d4a;color:#fff;font-weight:700;box-shadow:0 14px 32px #15213d3d;animation:feedback-in .22s ease-out both}
+@keyframes feedback-in{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
+#lesson .student-seat.attitude-recorded{animation:attitude-pulse .9s ease-out 2;outline:3px solid #6777f5;outline-offset:3px}
+@keyframes attitude-pulse{50%{transform:translateY(-4px);box-shadow:0 0 0 8px #6677f52b}}
+.today-attitude-history{margin:16px 0;padding:12px 14px;border:1px solid #e6eaf4;border-radius:13px;background:#f8faff;max-height:145px;overflow:auto}
+.today-attitude-history>div{display:flex;justify-content:space-between;color:#53627a;font-size:13px}.today-attitude-history>div b{color:#1d2d4a}.today-attitude-history>p{display:flex;gap:9px;align-items:center;margin:9px 0 0;font-size:13px}.today-attitude-history strong{font-size:12px}.today-attitude-history strong.plus{color:#287b66}.today-attitude-history strong.minus{color:#b4535f}.today-attitude-history .empty-history{color:#8490a5}
+.attitude-examples{margin:12px 0 0}.attitude-examples>p{margin:0 0 7px;color:#76849b;font-size:12px}.attitude-example-list{display:flex;gap:6px;flex-wrap:wrap}.attitude-example{padding:6px 9px;border:1px solid #dfe5fa;border-radius:8px;background:#f5f7ff;color:#5263d7;font-size:12px}.attitude-example:hover{background:#ebefff}.example-manager{margin-top:10px;color:#6f7d94;font-size:12px}.example-manager summary{cursor:pointer}.example-manager-list{margin:8px 0}.example-manager-list>div{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid #edf0f6}.example-manager-list button,.text-button{border:0;background:transparent;color:#6979ef;font-weight:700;cursor:pointer}.text-button{padding:3px 0}
