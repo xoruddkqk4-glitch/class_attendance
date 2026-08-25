@@ -44,7 +44,24 @@ node server.js
 
 Firebase를 연결하지 않은 경우 데이터는 이 브라우저의 로컬 저장소에 보관됩니다.
 
-Firebase 연결 후 `웹에 저장하기`를 누르면 학급 데이터가 Firestore의 `classes/{학급ID}` 문서에 저장됩니다. 실제 학교 환경에서는 Firebase Authentication과 교사 전용 Firestore 규칙을 설정하세요.
+Firebase 연결 후 교사 계정으로 로그인하고 `웹에 저장하기`를 누르면 선택 학급 데이터가 Firestore에 동기화됩니다. Firestore 규칙은 로그인한 교사가 본인이 소유한 학급에만 접근하도록 제한합니다.
+
+### Firebase 데이터 구조
+
+```text
+users/{teacherUid}
+classes/{classId}
+classes/{classId}/students/{studentId}
+classes/{classId}/lessons/{YYYY-MM-DD}
+classes/{classId}/layouts/current
+classes/{classId}/settings/general
+classes/{classId}/auditLogs/{logId}
+```
+
+- `users`에는 교사 UID, 이메일, 프로필·권한 기본값을 저장합니다.
+- `classes`에는 학급명, 담당 교사 UID, 생성·수정·삭제 시각을 저장합니다.
+- 학생, 날짜별 수업 기록, 자리 배치, 공통 설정은 학급 서브컬렉션으로 분리합니다.
+- 학급 삭제는 `deletedAt`, `deletedBy`를 남기는 복구 가능한 소프트 삭제 방식입니다.
 
 ## JSON 백업 형식
 
