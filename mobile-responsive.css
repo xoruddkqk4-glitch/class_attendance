@@ -55,6 +55,13 @@ body.lesson-focus-mode #lesson .page-heading { display: none !important; }
 #lesson:fullscreen .progress-note,
 #lesson:-webkit-full-screen .progress-note,
 body.lesson-focus-mode #lesson .progress-note { display: none !important; }
+
+/* Older iPad Safari drops a whole comma-separated selector list when it sees
+   the unsupported :fullscreen pseudo-class.  Keep its fallback rules alone. */
+body.lesson-focus-mode #lesson .page-heading,
+body.lesson-focus-mode #lesson .progress-note { display: none !important; }
+#lesson:-webkit-full-screen .page-heading,
+#lesson:-webkit-full-screen .progress-note { display: none !important; }
 #lesson:fullscreen .lesson-toolbar,
 body.lesson-focus-mode #lesson .lesson-toolbar {
   flex: 0 0 auto; width: 100%; max-width: none; margin: 0 0 8px; padding: 8px;
