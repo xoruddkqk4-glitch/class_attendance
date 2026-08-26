@@ -50,7 +50,11 @@ body.lesson-focus-mode #lesson {
   margin: 0; padding: 12px; background: #f5f7fb; display: block !important; overflow: hidden;
 }
 #lesson:fullscreen .page-heading,
+#lesson:-webkit-full-screen .page-heading,
 body.lesson-focus-mode #lesson .page-heading { display: none !important; }
+#lesson:fullscreen .progress-note,
+#lesson:-webkit-full-screen .progress-note,
+body.lesson-focus-mode #lesson .progress-note { display: none !important; }
 #lesson:fullscreen .lesson-toolbar,
 body.lesson-focus-mode #lesson .lesson-toolbar {
   flex: 0 0 auto; width: 100%; max-width: none; margin: 0 0 8px; padding: 8px;
