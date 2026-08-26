@@ -18,8 +18,8 @@ body.app-locked .app-shell { display: none; }
 .admin-teacher-row input[type="text"] { width: 100%; min-width: 0; border: 1px solid #dce3ef; border-radius: 8px; padding: 8px; font: 13px inherit; }
 .admin-role { display: flex; align-items: center; gap: 5px; color: #53627b; font-size: 12px; font-weight: 700; white-space: nowrap; }
 .admin-save { border: 0; border-radius: 8px; padding: 9px 11px; background: #eef0ff; color: #4c5bdd; font: 700 12px inherit; cursor: pointer; white-space: nowrap; }
-#adminGrid.student-view { direction: ltr !important; transform: none !important; }
-#adminGrid.student-view .student-card, #adminGrid.student-view .empty-seat { direction: ltr; transform: none !important; }
+#adminGrid.student-view { direction: ltr !important; transform: rotate(180deg) !important; }
+#adminGrid.student-view .student-card, #adminGrid.student-view .seat-status, #adminGrid.student-view .empty-seat { direction: ltr; transform: rotate(180deg) !important; }
 .dashboard-perspective-switch { margin-right: auto; }
 .dashboard-layout-card .card-header { gap: 8px; flex-wrap: wrap; }
 .dashboard-layout-card .card-header > div:first-child { flex: 1 1 100%; }
