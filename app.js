@@ -91,6 +91,7 @@ $('#attendanceControls').addEventListener('click',e=>{let button=e.target.closes
 document.addEventListener('click',e=>{if(e.target.closest('[data-progress-action]'))renderLessonForDate();let calendar=e.target.closest('[data-progress-calendar]');if(calendar){let input=calendar.parentElement.querySelector('[data-progress-date]');if(typeof input.showPicker==='function')input.showPicker();else input.click()}});
 document.addEventListener('change',e=>{if(e.target.dataset.progressDate)renderLessonForDate()});
 $('#modal').addEventListener('click',e=>{if(e.target.closest('.modal-close,[value="cancel"]')){e.preventDefault();closeModal()}});
+$('#modal').addEventListener('click',e=>{if(e.target.closest('[data-score]'))e.preventDefault()});
 $('#seatingGrid').addEventListener('click',e=>{let card=e.target.closest('.student-seat');if(mode==='attendance'&&card&&ses().deletedAttendance)delete ses().deletedAttendance[card.dataset.id]},true);
 $('#attendanceSummary').remove();
 renderModeControls();
