@@ -59,6 +59,58 @@
 .date-stepper-display .calendar-icon{font-size:13px;line-height:1}
 .date-stepper-hidden-picker{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 @media(max-width:820px){.record-quick-filters{padding:12px}.filter-row{flex-direction:column;align-items:stretch;gap:10px}.filter-group{flex-direction:column;align-items:flex-start;gap:4px}.record-keyword{margin-left:0;width:100%}.record-keyword input{width:100%}.date-stepper-control{width:100%;justify-content:flex-start}.date-stepper-display{flex:1;justify-content:center}}
+
+/* Daily Attendance Table (특정일 출석부) */
+.daily-table-header-banner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:0 0 12px;padding:12px 18px;border:1px solid #bfdbfe;border-radius:10px;background:#f0f7ff}
+.daily-banner-title{display:inline-flex;align-items:center;gap:8px;color:#1e3a8a;font-size:14px;font-weight:800}
+.daily-banner-icon{font-size:16px}
+.daily-banner-stats{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#475569}
+.daily-banner-stats span{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:14px;background:#ffffff;border:1px solid #e2e8f0}
+.daily-banner-stats .stat-absent.has-count{background:#fee2e2;color:#b91c1c;border-color:#fca5a5}
+.daily-banner-stats .stat-late.has-count{background:#fef3c7;color:#b45309;border-color:#fde68a}
+.daily-banner-stats .stat-early.has-count{background:#f3e8ff;color:#7e22ce;border-color:#e9d5ff}
+.daily-table-wrap{overflow-x:auto;border:1px solid #e2e8f0;border-radius:10px;background:#ffffff;box-shadow:0 1px 4px rgba(15,23,42,.04);margin-bottom:18px}
+.daily-attendance-table{width:100%;border-collapse:collapse;text-align:center;font-size:13px}
+.daily-attendance-table thead th{background:#f8fafc;color:#475569;font-size:12px;font-weight:800;padding:11px 12px;border-bottom:1px solid #e2e8f0;white-space:nowrap}
+.daily-attendance-table tbody tr{transition:background .15s}
+.daily-attendance-table tbody tr:hover{background:#f8fafc}
+.daily-attendance-table tbody td{padding:10px 12px;border-bottom:1px solid #f1f5f9;color:#334155}
+.daily-attendance-table .col-class{color:#64748b;font-weight:700;font-size:12px}
+.daily-attendance-table .col-number{font-weight:700;color:#475569}
+.daily-attendance-table .col-name{font-weight:800;color:#0f172a}
+.daily-attendance-table .col-status{padding:8px 12px}
+.daily-attendance-table .col-note{text-align:left;color:#64748b;font-size:12px;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.daily-attendance-table .col-action{width:60px;text-align:center}
+.attendance-badge{display:inline-flex;align-items:center;justify-content:center;min-width:54px;height:26px;padding:0 10px;border-radius:14px;font-size:12px;font-weight:800;letter-spacing:-.2px}
+.attendance-badge.status-present{background:#dcfce7;color:#15803d}
+.attendance-badge.status-absent{background:#fee2e2;color:#b91c1c;box-shadow:0 1px 4px rgba(220,38,38,.2)}
+.attendance-badge.status-late{background:#fef3c7;color:#b45309}
+.attendance-badge.status-early{background:#f3e8ff;color:#7e22ce}
+
+/* Period Compact Grid (전체 기간 콤팩트 명렬) */
+.period-grid-header-banner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:0 0 14px;padding:12px 18px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc}
+.period-banner-title{display:inline-flex;align-items:center;gap:8px;color:#334155;font-size:14px;font-weight:800}
+.period-banner-icon{font-size:16px}
+.period-banner-stats{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;color:#64748b}
+.period-compact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:12px;margin-bottom:18px}
+.student-compact-card{border:1px solid #e2e8f0;border-radius:10px;background:#ffffff;overflow:hidden;transition:border-color .16s,box-shadow .16s}
+.student-compact-card:hover{border-color:#cbd5e1;box-shadow:0 3px 10px rgba(15,23,42,.05)}
+.student-compact-card[open]{border-color:#93c5fd;box-shadow:0 4px 14px rgba(37,99,235,.09)}
+.student-compact-summary{display:flex;align-items:center;gap:8px;padding:11px 14px;cursor:pointer;user-select:none;font-size:13px;list-style:none}
+.student-compact-summary::-webkit-details-marker{display:none}
+.student-num-name{display:inline-flex;align-items:baseline;gap:6px}
+.student-num-name b{color:#0f172a;font-size:14px}
+.student-num-name small{color:#64748b;font-weight:700;font-size:11px}
+.student-avg-badge{font-size:11px;font-weight:700;color:#2563eb;background:#eff6ff;padding:2px 7px;border-radius:6px;border:1px solid #dbeafe;white-space:nowrap}
+.student-stat-tags{display:inline-flex;align-items:center;gap:4px;margin-left:auto}
+.stat-tag{font-size:11px;font-weight:700;padding:2px 6px;border-radius:6px;white-space:nowrap}
+.stat-tag.absent{background:#fee2e2;color:#b91c1c}
+.stat-tag.late{background:#fef3c7;color:#b45309}
+.stat-tag.early{background:#f3e8ff;color:#7e22ce}
+.student-record-count{font-size:11px;font-weight:700;color:#94a3b8;white-space:nowrap}
+.student-compact-card .record-detail-head{display:grid;grid-template-columns:90px 100px 70px 70px 1fr 50px;background:#f8fafc;padding:7px 12px;font-size:11px;font-weight:800;color:#64748b;border-top:1px solid #f1f5f9;border-bottom:1px solid #f1f5f9}
+.student-compact-card .record-detail-row{display:grid;grid-template-columns:90px 100px 70px 70px 1fr 50px;align-items:center;padding:7px 12px;border-bottom:1px solid #f8fafc;font-size:12px}
+@media(max-width:820px){.period-compact-grid{grid-template-columns:1fr}.student-compact-card .record-detail-head,.student-compact-card .record-detail-row{grid-template-columns:70px 85px 55px 55px 1fr 45px;font-size:11px;padding:6px 8px}}
 .class-create-modal{position:relative;padding:33px 33px 28px;background:linear-gradient(145deg,#fff 0%,#f7f8ff 100%)!important;overflow:hidden}.class-create-modal::after{content:"";position:absolute;right:-54px;top:-52px;width:155px;height:155px;border-radius:50%;background:radial-gradient(circle,#dfe4ff 0%,#eef0ff00 68%);pointer-events:none}.class-create-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:17px;border-radius:13px;background:linear-gradient(135deg,#7180f4,#5263dc);box-shadow:0 9px 20px #5969ea3d;color:#fff;font-size:26px;font-weight:300;line-height:1}.modal-eyebrow{margin:0 0 5px!important;color:#6676e8!important;font-size:10px!important;font-weight:800;letter-spacing:1.3px}.class-create-modal h2{position:relative;margin-bottom:6px;font-size:24px;letter-spacing:-.8px}.class-create-copy{margin:0 0 22px!important;color:#77849b!important}.class-create-modal label{margin:0 0 7px;color:#4f5d75;font-size:12px}.class-create-modal input{border:1px solid #d9dff0;background:#fff;box-shadow:0 2px 5px #2c39600a;padding:12px 13px;transition:.18s}.class-create-modal input:focus{border-color:#7787ef;box-shadow:0 0 0 4px #6677ef18;outline:none}.class-create-modal .modal-actions{position:relative;margin-top:24px}.class-create-modal .secondary-button{background:#eef0ff}.class-create-modal .primary-button{padding-inline:19px}
 .submission-heading{gap:18px}.submission-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.submission-card{padding:0;overflow:hidden}.submission-filters{display:flex;align-items:end;gap:10px;padding:17px 20px;border-bottom:1px solid #e8edf5;background:#fafbfe}.submission-filters label{display:grid;gap:5px;color:#68778e;font-size:11px;font-weight:700}.submission-filters select,.submission-filters input{height:37px;min-width:145px;border:1px solid #dbe2ed;border-radius:8px;background:#fff;color:#35445e;padding:8px;font:600 12px inherit;outline:none}.submission-filters select:focus,.submission-filters input:focus{border-color:#7b89ed;box-shadow:0 0 0 3px #6677ef14}.submission-search{margin-left:auto}.submission-search input{width:210px}.submission-count{padding:9px 0;color:#5969ea;font-size:13px;white-space:nowrap}.submission-table-wrap{overflow:auto;max-height:calc(100vh - 250px)}.submission-table{width:100%;min-width:680px;border-collapse:separate;border-spacing:0}.submission-table th,.submission-table td{min-width:128px;padding:11px 12px;border-right:1px solid #e8edf5;border-bottom:1px solid #e8edf5;text-align:center}.submission-table th:first-child{position:sticky;left:0;z-index:1;min-width:155px;background:#fff;text-align:left}.submission-table thead th{position:sticky;top:0;z-index:2;background:#f6f8fd;color:#43526b;font-size:12px}.submission-table thead th:first-child{z-index:3;background:#f6f8fd}.submission-table th:last-child,.submission-table td:last-child{border-right:0}.submission-table tbody tr:hover th,.submission-table tbody tr:hover td{background:#fbfcff}.submission-table tbody th b,.submission-table tbody th small{display:block}.submission-table tbody th b{font-size:13px}.submission-table tbody th small{margin-top:3px;color:#8591a4;font-size:11px;font-weight:500}.submission-column-name{display:block;max-width:105px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.submission-table thead small{display:block;margin-top:4px;color:#8490a6;font-size:10px}.submission-column-delete{position:absolute;margin:0 0 0 5px;border:0;background:transparent;color:#aab3c2;font-size:16px;cursor:pointer}.submission-column-delete:hover{color:#d2605b}.submission-cell{min-width:78px;border:1px solid #f0c7c5;border-radius:8px;background:#fff7f6;color:#c9635e;padding:7px 9px;font:700 12px inherit;cursor:pointer;transition:.16s}.submission-cell:hover{transform:translateY(-1px);box-shadow:0 4px 10px #25325312}.submission-cell.is-complete{border-color:#bde6dc;background:#eefbf7;color:#238b75}.submission-empty,.submission-empty-state{padding:52px 20px!important;text-align:center!important;color:#7b879a}.submission-empty-state{display:grid;gap:7px}.submission-empty-state b{color:#43526b;font-size:15px}.submission-empty-state span{font-size:13px}@media(max-width:820px){.submission-heading{display:grid}.submission-actions{justify-content:flex-start}.submission-actions button{flex:1}.submission-filters{display:grid;grid-template-columns:1fr 1fr;padding:13px}.submission-filters label{min-width:0}.submission-filters select,.submission-filters input{min-width:0;width:100%}.submission-search{margin:0;grid-column:1 / -1}.submission-search input{width:100%}.submission-count{padding:0}.submission-table-wrap{max-height:none}.submission-table th,.submission-table td{min-width:112px;padding:9px}.submission-table th:first-child{min-width:126px}}
 .submission-bulk-actions{display:flex;align-items:center;gap:7px;margin-left:auto;padding-bottom:1px;color:#718096;font-size:11px;font-weight:700;white-space:nowrap}.submission-bulk-actions button{height:37px;border:1px solid #f0c7c5;border-radius:8px;background:#fff7f6;color:#c9635e;padding:0 11px;font:700 12px inherit;cursor:pointer}.submission-bulk-actions button:hover{background:#ffebe9}.submission-column-modal{min-width:min(440px,calc(100vw - 30px))}@media(max-width:820px){.submission-bulk-actions{grid-column:1 / -1;margin-left:0}.submission-bulk-actions button{flex:1}.submission-column-modal{min-width:0}}
