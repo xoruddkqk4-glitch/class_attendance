@@ -195,4 +195,15 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `node --check app.js`: 구문 검사 정상 통과 (Fast Terminal Verification 준수)
   - `node --check server.js`: 구문 검사 정상 통과
 
+## [2026-09-30 08:41] 업데이트 이력 (Commit ID: 7d7fb9a)
+- **수정 내용**:
+  - **전체 기간 조회 화면 복원 및 듀얼 뷰 최적화**:
+    - 사용자 피드백을 반영하여 전체 기간 조회(`selectedRecordDate === null`) 시 화면을 기존의 넓고 시원한 1열 표준 아코디언 카드 뷰(`<details class="student-record" open>`)로 복원
+    - 각 학생 카드 요약부(`학급 배지`, `이름`, `학번`, `태도 평균 점수`, `기록 건수`, `학생 기록 전체 삭제 버튼`) 및 카드 내부 세부 날짜별 기록 테이블(`학급`, `날짜`, `출결`, `점수`, `수업 태도 메모`, `삭제`)을 기본 펼침 상태로 완벽 복원
+    - 특정 날짜 검색 시(`selectedRecordDate !== null`)의 1인 1행 간결한 단일 출석부 테이블 뷰(`학번 | 이름 | 출결 배지 | 메모 | 삭제`) 및 당일 출결 집계 배지는 그대로 유지
+- **검증 결과**:
+  - `node --check app.js`: 구문 검사 정상 통과 (Fast Terminal Verification 준수)
+  - `node --check server.js`: 구문 검사 정상 통과
+
+
 
