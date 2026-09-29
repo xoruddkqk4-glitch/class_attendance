@@ -1,6 +1,6 @@
 # Agent Execution Rules: Terminal-Only Fast Verification
 
-에이전트 실행 규칙: 터미널 전용 고속 검증 (`.agents/rules/rules.md`)
+에이전트 실행 규칙: 터미널 전용 고속 검증 (`GEMINI.md` / `AGENTS.md` / `.agents/rules/rules.md`)
 
 ## 1. Browser & Scratchpad Policy (브라우저 및 시각 검증 정책)
 - **STRICT REQUIREMENT:** Do NOT launch Chrome, Scratchpad, or any browser instance for visual verification during standard code editing tasks.
@@ -52,3 +52,11 @@
 - '반영해줘' 등의 자연어 승인 문구 없이도 `/apply` 명령어 하나로 즉시 구현을 시작합니다.
 - 코드 수정 후에는 Rule 2에 따라 빠른 터미널 정적 검증을 수행하고 결과를 보고합니다.
 - 단, Rule 3/4에 따라 자동 커밋 및 푸시는 진행하지 않으며 명시적인 `/git-commit` 수신 시에만 커밋/푸시를 수행합니다.
+
+---
+
+## 🛠 등록된 프로젝트 전용 스킬 (`.agents/skills/`)
+1. **`/ask`** (`.agents/skills/ask/SKILL.md`): 코드 변경 없는 질문 답변 및 `implementation_plan.md` 계획서 작성
+2. **`/apply`** (`.agents/skills/apply/SKILL.md`): 작성된 `implementation_plan.md` 계획서를 프로젝트에 즉시 코드 반영
+3. **`/git-commit`** (`.agents/skills/git-commit/SKILL.md`): `README.md` 하단 누적 이력 기록 및 GitHub 원격 커밋/푸시 실행
+4. **`/scratchpad`** (`.agents/skills/scratchpad/SKILL.md`): 브라우저 서브에이전트 기반 UI/화면 인터액션 직접 검증
