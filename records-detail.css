@@ -135,3 +135,29 @@
   .daily-banner-actions{width:100%;justify-content:flex-end}
 }
 
+/* Total Attitude Score Badge and Accordion UI */
+.score-badge{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.score-badge.positive{background:#ecfdf5;color:#059669;border:1px solid #a7f3d0}
+.score-badge.negative{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.score-badge.zero{background:#f8fafc;color:#64748b;border:1px solid #e2e8f0}
+.record-student-num{font-size:13px;font-weight:700;color:#64748b}
+.record-student-name{font-size:15px;font-weight:800;color:#0f172a}
+.record-count-badge{font-size:11px;font-weight:700;color:#64748b;background:#f1f5f9;padding:3px 8px;border-radius:12px;white-space:nowrap}
+.record-accordion-arrow{font-size:11px;color:#94a3b8;transition:transform .18s ease-in-out;margin-left:auto;user-select:none}
+.student-record[open] .record-accordion-arrow{transform:rotate(180deg)}
+.student-record summary{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;user-select:none;transition:background .15s}
+.student-record summary:hover{background:#f8fafc}
+.student-record summary::-webkit-details-marker{display:none}
+.student-record summary .record-delete-student{margin-left:8px}
+.record-top-actions{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.record-toggle-all-btn{height:30px;padding:0 12px;border:1px solid #cbd5e1;border-radius:8px;background:#ffffff;color:#475569;font:700 12px inherit;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:4px}
+.record-toggle-all-btn:hover{background:#f1f5f9;border-color:#94a3b8;color:#0f172a}
+.attitude-detail-head,.attitude-detail-row{display:grid;grid-template-columns:110px 110px 100px 1fr 104px;gap:12px;padding:10px 15px;font-size:12px}
+.attitude-detail-head{background:#f5f7fb;color:#718096;font-weight:700}
+.attitude-detail-row{border-top:1px solid #eef1f5;color:#42526a;align-items:center}
+@media(max-width:820px){
+  .student-record summary{flex-wrap:wrap;gap:8px;padding:10px 12px}
+  .student-record summary .record-delete-student{margin-left:auto}
+  .attitude-detail-head,.attitude-detail-row{grid-template-columns:72px 75px 65px 1fr 78px;gap:6px;padding:8px 10px;font-size:11px}
+}
+
