@@ -272,3 +272,12 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
     - '학생별 누적 기록' 탭의 일별 출결 현황 배너 우측에 `[📅 날짜 변경]`, `[🗑️ 이 날짜 전체 삭제]` 버튼 배치
 - **검증 결과**:
   - `node -c app.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+
+## [2026-09-30 11:38] 업데이트 이력 (Commit ID: 204c7a5)
+- **수정 내용**:
+  - **학생별 누적 기록 '수정'·'삭제' 버튼 텍스트 줄바꿈 방지 및 UI 개선**:
+    - 특정 날짜 출석부 테이블 및 전체 기간 상세 목록의 액션 버튼(`.record-edit`, `.record-delete`)에 `white-space: nowrap`, `word-break: keep-all`, `display: inline-flex` 속성을 적용하여 버튼 내 텍스트('수정', '삭제')가 세로 2줄로 꺾이지 않고 가로 한 줄로 반듯하게 표시되도록 수정
+    - 액션 버튼 래퍼(`.record-action-group`)에 `white-space: nowrap`, `flex-wrap: nowrap`을 지정하여 두 버튼이 언제나 가로 나란히 정렬되도록 고정
+    - 특정일 출석부 테이블의 작업 컬럼(`.daily-attendance-table .col-action`) 너비를 `104px` (최소 `100px`)로 확장하여 좁은 화면에서도 버튼 텍스트와 레이아웃이 찌그러지지 않도록 최적화
+- **검증 결과**:
+  - `node -c app.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
