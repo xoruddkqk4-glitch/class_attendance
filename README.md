@@ -220,6 +220,20 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `node --check app.js`: 구문 검사 정상 통과 (Fast Terminal Verification 준수)
   - `node --check server.js`: 구문 검사 정상 통과
 
+## [2026-09-30 09:29] 업데이트 이력 (Commit ID: 8565fb5)
+- **수정 내용**:
+  - **'삭제' 버튼 기능 재정의 (당일 기록 행 완전 삭제)**:
+    - '수정' 기능 분리에 맞춰 '삭제' 버튼의 역할을 '태도 메모 텍스트 삭제'에서 해당 날짜 세션의 '출결 + 태도 메모 일체 완전 삭제'로 개선
+    - 출결 삭제 플래그(`deletedAttendance[studentId] = true` 및 `delete attendance[studentId]`)와 태도 메모 전체 제거를 동시에 수행하여, 삭제 후 기본 출결 행이 다시 나타나는 버그 원천 해결
+  - **저장 롤백(되살아남) 버그 해결 및 클라우드 동기화 최적화**:
+    - **Firestore 세션 문서 완전 덮어쓰기 (`merge: false`)**: `lessons` 문서를 `{ merge: false }`로 저장하여 서버 상의 `attendance` 맵에 삭제된 학생 키가 병합 잔존하는 현상 차단
+    - **저장 대상 학급 추적 (`pendingCloudClassIds`)**: 활성 학급 외 다른 학급의 기록을 수정/삭제하더라도 변경된 학급이 Firestore에 누락 없이 안전하게 전송되도록 확장
+    - **자체 에코 롤백 차단 (`lastCloudSaveCompletedAt`)**: 로컬 저장 완료 직후 2초간 자신이 발생시킨 스탬프 갱신으로 인한 불필요한 `cloudLoad` 재호출을 방지하여 레이스 컨디션 및 화면 되살아남 방지
+- **검증 결과**:
+  - `node --check app.js`: 구문 검사 정상 통과 (Fast Terminal Verification 준수)
+  - `node --check server.js`: 구문 검사 정상 통과
+
+
 
 
 
