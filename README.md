@@ -233,6 +233,26 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `node --check app.js`: 구문 검사 정상 통과 (Fast Terminal Verification 준수)
   - `node --check server.js`: 구문 검사 정상 통과
 
+## [2026-09-30 09:54] 업데이트 이력 (Commit ID: 2ccc7f7)
+- **수정 내용**:
+  - **기록 수정 모달에서 '결석' 시 수업 태도 메모 및 점수 입력 비활성화**:
+    - 누적 기록 수정 모달(`openRecordEditModal`)에서 출결 상태가 '결석(`absent`)'으로 선택되면 수업 태도 메모 입력창(`textarea`)을 즉시 `disabled` 처리 및 회색 비활성화 스타일 적용 (`placeholder="결석한 학생은 수업 태도를 기록할 수 없습니다."`)
+    - 태도 점수 옵션 그룹 전체 비활성화(`opacity: 0.4; pointer-events: none;`) 및 '점수 없음' 강제 초기화, 예시 문장 피커 비활성화
+    - 상단에 `⚠️ 결석 상태에서는 수업 태도 점수 및 메모를 기록할 수 없습니다.` 안내 문구 표시
+    - 다시 '출석·지각·조퇴'로 변경 시 이전 메모 및 입력창, 점수 버튼 정상 복원
+    - 결석 상태로 [수정 완료] 저장 시 대상 학생의 기존 태도 기록을 세션에서 완전히 제거하여 결석 배지만 남도록 정리
+  - **기존 저장된 데이터 일괄 자동 정리 (Data Clean-up)**:
+    - 전역 일괄 정리 함수 `cleanupAbsentAttitudes` 추가: 모든 학급 및 날짜 세션을 검사하여 출결이 '결석'인 학생에게 남아있던 과거 태도 메모/점수를 핀포인트로 찾아내어 안전하게 일괄 제거
+    - 앱 시작(`normalizeTeacherState`) 및 Firebase 클라우드 동기화(`cloudLoad`) 시점에 자동 실행하여 로컬(`localStorage`) 및 Firestore 클라우드 양쪽에 즉시 영구 반영
+    - 출석·지각·조퇴 학생의 기록, 출결 상태 자체, 진도, 자리 배치 등 다른 모든 데이터는 100% 안전하게 보존
+  - **누적 기록 리포트 2중 방어 필터링**:
+    - `recordRows` 함수에서 `attendanceKey !== 'absent'`인 경우에만 태도 메모 행을 생성하도록 하여 결석생 태도 메모의 화면 노출 원천 차단
+  - **메인 좌석 배치도 출결 변경 연동**:
+    - 좌석 카드 클릭(`lessonClick`) 시 출결 상태가 '결석'으로 전환되면 당일 세션에 작성되어 있던 해당 학생의 태도 메모를 즉시 자동 필터링하여 제거
+- **검증 결과**:
+  - `node --check app.js`: 구문 검사 정상 통과 (Fast Terminal Verification 준수)
+  - `node --check server.js`: 구문 검사 정상 통과
+
 
 
 
