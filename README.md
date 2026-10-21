@@ -298,3 +298,17 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
     - 리포트 상단에 `[모두 펼치기 / 모두 접기]` 원클릭 토글 버튼 제공
 - **검증 결과**:
   - `node -c app.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+
+## [2026-10-22 08:49] 업데이트 이력 (Commit ID: 3dd9414)
+- **수정 내용**:
+  - **Impeccable 디자인 스킬 프레임워크 도입 및 연동**:
+    - `pbakaus/impeccable` 오픈소스 프론트엔드 디자인 지침 및 바이너리 엔진(v4.7.0)을 프로젝트(`.agents/skills/impeccable/`)에 구축
+    - `AGENTS.md` 및 `GEMINI.md`의 프로젝트 전용 스킬 목록에 `/impeccable` 등록
+    - 학급 출석부 웹 앱의 사용자·환경·가치를 정의한 `PRODUCT.md` 및 디자인 토큰·컴포넌트 규격을 정의한 `DESIGN.md` 생성
+  - **종합 디자인 점검(Audit · Critique · Colorize · Polish) 기반 UI/UX 리팩토링**:
+    - **색상 전략 및 접근성(WCAG AA) 최적화**: `styles.css`의 `--muted` 토큰을 `#718096` ➔ `#526071`로 보정하여 명도 대비 기준(3.8:1 미달 ➔ 5.5:1 이상)을 충족, `--accent` 토큰을 `#4f46e5`로 정밀화(대비 5.2:1), 조퇴 상태 전용 토큰(`--status-early: #6366f1`)을 주요 액션 버튼과 분리, 교탁(`.teacher-desk`) 텍스트 명도를 `#4352cf`로 보정(대비 5.3:1)
+    - **AI 생성 UI 클리셰 및 시각적 소음 제거**: `records-detail.css`의 진도 노트 하단 4색 무지개 줄무늬(`.progress-note::after`) 완전 제거, 지난 수업 내용의 두꺼운 4px 사이드탭 테두리(`.progress-previous`)를 1px 단정 보더로 교체, 형광 노랑 그라디언트를 차분한 웜 샌드 틴트(`#fffdf5`)로 정돈, 불필요한 `!important` 8건 제거
+    - **타이포그래피 및 모바일 터치 타깃 안전성 확보**: `classroom.css`의 대형 프리셋 설명 폰트 크기 `10px` ➔ `11px` 상향, 상단 툴바 버튼 텍스트 명도 보정(`#4b5a6f`, 대비 5.6:1), `430px` 이하 모바일 뷰포트에서 학생 카드 최소 높이(`80px`) 및 패딩(`8px 6px`) 확보
+- **검증 결과**:
+  - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+  - `impeccable detect .`: 0 anti-patterns, 0 advisory notes (디자인 결함 0건 완전 무결 통과)

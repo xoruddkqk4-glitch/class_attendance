@@ -60,3 +60,5 @@
 2. **`/apply`** (`.agents/skills/apply/SKILL.md`): 작성된 `implementation_plan.md` 계획서를 프로젝트에 즉시 코드 반영
 3. **`/git-commit`** (`.agents/skills/git-commit/SKILL.md`): `README.md` 하단 누적 이력 기록 및 GitHub 원격 커밋/푸시 실행
 4. **`/scratchpad`** (`.agents/skills/scratchpad/SKILL.md`): 브라우저 서브에이전트 기반 UI/화면 인터액션 직접 검증
+5. **`/impeccable`** (`.agents/skills/impeccable/SKILL.md`): 프론트엔드 UI/UX 디자인 검토, 안티패턴 검사, 타이포그래피/색상/레이아웃 정밀 개선 스킬
+
