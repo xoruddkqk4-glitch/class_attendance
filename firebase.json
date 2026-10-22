@@ -27,7 +27,8 @@
       ".codex/**",
       "*.md",
       "server.js",
-      "excel-export.mjs"
+      "excel-export.mjs",
+      "legacy_css/**"
     ],
     "cleanUrls": true
   }

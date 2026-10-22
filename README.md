@@ -388,5 +388,23 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
   - `impeccable detect .`: `0 anti-patterns found.` (디자인 결함 0건 완전 무결 통과)
 
+## [2026-10-22 11:22] 업데이트 이력 (Commit ID: aa74e59)
+- **수정 내용**:
+  - **대시보드와 수업 화면 가로 폭 1260px 일치화 및 좌석 그리드 최적 비율 구현**:
+    - `attitude-layout.css`: `#lesson.view`에 걸려 있던 협소한 너비 제한을 제거하고 교사 대시보드와 동일한 `max-width: 1260px; margin: auto; padding: 36px 44px 64px;`를 적용하여 탭 전환 시 시각적 일관성 완벽 확보
+    - `#lesson .seating-grid`에 `max-width: 1040px; margin: 0 auto;`를 적용하여, 외곽 카드 및 헤더는 1260px를 시원하게 채우면서도 좌석 그리드 카드가 와이드 화면에서 좌우로 과도하게 늘어지지 않는 황금 비율 정돈
+  - **루트 디렉터리 레거시 CSS 정리 및 아카이빙 (`legacy_css/`)**:
+    - `index.html`에서 링크되지 않았던 과거 16개 레거시 CSS 파일들을 `legacy_css/` 폴더로 분리 이동하여 저장소 구조를 간결하고 체계적으로 정돈
+  - **Firebase Hosting 배포 무시 목록 갱신 (`firebase.json`)**:
+    - `hosting.ignore`에 `"legacy_css/**"`를 추가하여 정적 호스팅 번들에 레거시 파일이 업로드되지 않도록 최적화
+  - **캐시 버스팅 버전 갱신 (`index.html`)**:
+    - 스타일시트 및 스크립트 캐시 버스팅 버전을 `?v=20261022.4`로 갱신하여 클라이언트 브라우저 최신 스타일 즉시 반영 보장
+- **검증 결과**:
+  - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+  - `impeccable detect .`: 0 anti-patterns found (정적 결함 0건 완전 무결 통과)
+  - `impeccable doctor`: No drift found (DESIGN.md / PRODUCT.md 규격 100% 일치)
+
+
+
 
 

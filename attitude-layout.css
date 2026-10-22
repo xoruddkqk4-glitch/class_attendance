@@ -1,5 +1,4 @@
 /* 학습 태도 기록과 자리배치에 집중할 수 있도록 수업 화면의 여백을 재구성합니다. */
-#lesson.view{max-width:1040px}
 #lesson .page-heading{margin-bottom:18px}
 #lesson .lesson-toolbar{margin-bottom:14px}
 #lesson .summary-row{margin-bottom:16px}
@@ -9,7 +8,7 @@
 #localSaveButton{background:#5969ea!important;border-color:#5969ea!important;color:#fff!important;box-shadow:0 2px 8px rgba(15,23,42,.12)}
 #localSaveButton:hover{background:#4d5ddd!important}
 #lesson .seating-card{min-height:clamp(520px,66vh,740px);padding:18px 24px!important}
-#lesson .seating-grid{grid-auto-rows:clamp(56px,6.8vh,72px)!important;gap:clamp(10px,1vw,16px)!important;align-content:center!important}
+#lesson .seating-grid{grid-auto-rows:clamp(56px,6.8vh,72px)!important;gap:clamp(10px,1vw,16px)!important;align-content:center!important;max-width:1040px;margin:0 auto}
 #lesson .seat,#lesson .student-card{height:clamp(56px,6.8vh,72px)!important;min-height:clamp(56px,6.8vh,72px)!important}
 #lesson .student-number{font-size:12px}
 #lesson .student-name{font-size:14px}
@@ -21,7 +20,7 @@
 #lesson:fullscreen .seat,#lesson:fullscreen .student-card{height:90px!important;min-height:90px!important}
 #lesson:fullscreen .student-number{font-size:13px}
 #lesson:fullscreen .student-name{font-size:16px}
-@media(max-width:820px){#lesson.view{max-width:100%!important}#lesson .seating-card{padding:14px!important;min-height:500px}#lesson .seating-grid{grid-auto-rows:54px!important;gap:8px!important}}
+@media(max-width:820px){#lesson .seating-card{padding:14px!important;min-height:500px}#lesson .seating-grid{grid-auto-rows:54px!important;gap:8px!important}}
 
 .attitude-feedback{position:fixed;z-index:1000;left:50%;bottom:28px;transform:translateX(-50%);padding:13px 20px;border-radius:999px;background:#1d2d4a;color:#fff;font-weight:700;box-shadow:0 10px 25px -5px rgba(0,0,0,0.25), 0 8px 10px -6px rgba(0,0,0,0.2);animation:feedback-in .22s ease-out both}
 @keyframes feedback-in{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
