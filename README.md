@@ -418,6 +418,17 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
   - `impeccable detect .`: 0 anti-patterns found (정적 결함 0건 완전 무결 통과)
 
+## [2026-10-22 11:48] 업데이트 이력 (Commit ID: 2640295)
+- **수정 내용**:
+  - **수업 진도 패널 안내 라벨 텍스트 고도화 (`app.js`)**:
+    - 직전 수업 기록 안내 라벨을 `'이번 시간에 나갈 진도'`에서 `'[지난 시간 차시] 이번 시간에 나갈 진도'`로 명확하게 수정하여 지난 차시 정보와 당일 진행할 진도의 연속성을 직관적으로 파악할 수 있도록 UX 라이팅 개선
+  - **캐시 버스팅 버전 갱신 (`index.html`)**:
+    - 최신 스크립트 및 스타일시트 캐시 버스팅 쿼리스트링을 `?v=20261022.7`로 동기화
+- **검증 결과**:
+  - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+  - `impeccable detect .`: 0 anti-patterns found (정적 결함 0건 완전 무결 통과)
+
+
 
 
 
