@@ -404,6 +404,21 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `impeccable detect .`: 0 anti-patterns found (정적 결함 0건 완전 무결 통과)
   - `impeccable doctor`: No drift found (DESIGN.md / PRODUCT.md 규격 100% 일치)
 
+## [2026-10-22 11:37] 업데이트 이력 (Commit ID: 18ad316)
+- **수정 내용**:
+  - **수업 진도 패널 안내 라벨 텍스트 변경 (`app.js`)**:
+    - 교사 대시보드 및 수업 중 자리배치 화면의 수업 진도 화이트보드 패널(`renderProgress`)에서 직전 기록 안내 라벨을 `'이전 차시 / 이전 시간에 나간 진도'`에서 `'이번 시간에 나갈 진도'`로 명확하게 수정
+  - **수업 중 자리배치 화면 좌석 그리드 축소/붕괴 현상 복구 (`attitude-layout.css`, `classroom.css`)**:
+    - `#lesson .seating-grid`에 부여되었던 `max-width: 1040px; margin: 0 auto;`가 플렉스 컬럼 부모 컨테이너(`.lesson-classroom`)와 결합 시 교차축 `stretch`를 상실하고 `shrink-to-fit`으로 축소되던 flexbox 레이아웃 버그를 해결
+    - 축소 원인이었던 `margin: 0 auto` 및 너비 제한을 제거하고 `#lesson .seating-grid`에 `width: 100%!important;` 적용
+    - `classroom.css`의 `.seating-grid` 기본 스타일에 `width: 100%;`를 명시하여 향후 컨테이너 너비 축소 방어 로직 완비
+  - **캐시 버스팅 버전 갱신 (`index.html`)**:
+    - 스타일시트 및 스크립트 캐시 버스팅 쿼리스트링을 `?v=20261022.6`으로 동기화하여 변경사항 즉시 반영
+- **검증 결과**:
+  - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+  - `impeccable detect .`: 0 anti-patterns found (정적 결함 0건 완전 무결 통과)
+
+
 
 
 

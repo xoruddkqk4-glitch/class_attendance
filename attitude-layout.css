@@ -8,7 +8,7 @@
 #localSaveButton{background:#5969ea!important;border-color:#5969ea!important;color:#fff!important;box-shadow:0 2px 8px rgba(15,23,42,.12)}
 #localSaveButton:hover{background:#4d5ddd!important}
 #lesson .seating-card{min-height:clamp(520px,66vh,740px);padding:18px 24px!important}
-#lesson .seating-grid{grid-auto-rows:clamp(56px,6.8vh,72px)!important;gap:clamp(10px,1vw,16px)!important;align-content:center!important;max-width:1040px;margin:0 auto}
+#lesson .seating-grid{width:100%!important;grid-auto-rows:clamp(56px,6.8vh,72px)!important;gap:clamp(10px,1vw,16px)!important;align-content:center!important}
 #lesson .seat,#lesson .student-card{height:clamp(56px,6.8vh,72px)!important;min-height:clamp(56px,6.8vh,72px)!important}
 #lesson .student-number{font-size:12px}
 #lesson .student-name{font-size:14px}
