@@ -312,3 +312,13 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
 - **검증 결과**:
   - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
   - `impeccable detect .`: 0 anti-patterns, 0 advisory notes (디자인 결함 0건 완전 무결 통과)
+
+## [2026-10-22 09:00] 업데이트 이력 (Commit ID: a017f40)
+- **수정 내용**:
+  - **대시보드와 수업 화면 가로 폭 통일 (`max-width: 1260px`)**:
+    - `refinement.css`에서 데스크톱 화면(`#lesson.view.active`)에 적용되어 있던 강제 전체 폭 설정(`max-width: none;`)을 제거
+    - 교사 대시보드와 동일한 `max-width: 1260px; margin: auto; padding: 22px 46px 40px;`로 일치화
+    - [교사 대시보드]와 [수업 중 자리배치] 탭 전환 시 화면 폭이 덜컥거리며 바뀌던 시각적 불연속성을 완전히 해소하고 와이드 모니터 시선 분산 방지
+- **검증 결과**:
+  - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+  - `impeccable detect .`: 0 anti-patterns (디자인 결함 0건 완전 무결 통과)
