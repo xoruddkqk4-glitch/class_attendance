@@ -20,7 +20,7 @@
 #lesson:fullscreen .student-name{font-size:16px}
 @media(max-width:820px){#lesson .seating-card{padding:14px!important;min-height:500px}#lesson .seating-grid{grid-auto-rows:54px!important;gap:8px!important}}
 
-.attitude-feedback{position:fixed;z-index:1000;left:50%;bottom:28px;transform:translateX(-50%);padding:13px 20px;border-radius:999px;background:#1d2d4a;color:#fff;font-weight:700;box-shadow:0 14px 32px #15213d3d;animation:feedback-in .22s ease-out both}
+.attitude-feedback{position:fixed;z-index:1000;left:50%;bottom:28px;transform:translateX(-50%);padding:13px 20px;border-radius:999px;background:#1d2d4a;color:#fff;font-weight:700;box-shadow:0 10px 25px -5px rgba(0,0,0,0.25), 0 8px 10px -6px rgba(0,0,0,0.2);animation:feedback-in .22s ease-out both}
 @keyframes feedback-in{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
 #lesson .student-seat.attitude-recorded{animation:attitude-pulse .9s ease-out 2;outline:3px solid #6777f5;outline-offset:3px}
 @keyframes attitude-pulse{50%{transform:translateY(-4px);box-shadow:0 0 0 8px #6677f52b}}

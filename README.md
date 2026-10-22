@@ -336,3 +336,27 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
 - **검증 결과**:
   - `node -c app.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
 
+## [2026-10-22 09:50] 업데이트 이력 (Commit ID: 6432095)
+- **수정 내용**:
+  - **Impeccable 25개 전수 검증 기반 종합 UI/UX 리팩토링 (`/apply`)**:
+    - **CSS 아키텍처 정돈 및 런타임 동적 주입 제거 (`extract`, `distill`, `optimize`)**:
+      - `app.js` 상단에서 런타임에 20개 스타일시트를 삽입하던 `document.head.insertAdjacentHTML` 코드 전면 제거 (초기 로딩 FOUC 및 리플로우 방지)
+      - `index.html` `<head>` 태그 내에 핵심 스타일시트 정적 `<link>` 태그 배치로 초기 파싱 시점에 스타일시트 로드 완료
+      - `styles.css` 및 `classroom.css`를 통합 정돈하여 40여 개의 `!important` 특이성 충돌 전면 제거
+    - **디자인 토큰 체계화 & AI 안티패턴/클리셰 완벽 해소 (`detect`, `document`, `doctor`, `polish`)**:
+      - 3단계 곡률 체계(`--radius-sm: 8px`, `--radius-md: 12px`, `--radius-lg: 16px`) 및 6단계 텍스트 스케일(`11/12/14/16/20/24px`) 등록
+      - `.page-heading::before` 4px 사이드 탭 스트라이프 제거 (`side-tab` anti-pattern 해소)
+      - 버튼 및 모달, 툴바의 유색 글로우 섀도우를 자연스러운 중립 엘리베이션 섀도우(`dark-glow` 해소)로 전면 교체
+      - `.class-create-modal`의 방사형 그라데이션 헤일로(`radial-halo`) 및 보라색 계열 채도 편향 제거
+      - 조퇴 배지 및 일별 통계 뱃지 컬러를 canonical 인디고(`--status-early: #6366f1;`, 배경 `#eef2ff`, 텍스트 `#4352cf`)로 일원화
+    - **Impeccable 규격 동기화 (`init`, `document`)**:
+      - `DESIGN.md`: `colors`, `typography`, `components`, `anti-patterns` 표준 규격 명세 작성
+      - `PRODUCT.md`: `impeccable:product-schema 1` 공식 규격(Positioning, Operating Context, Principles, Constraints 등) 최신화
+    - **시각 노이즈 완화 및 온보딩 피드백 강화 (`quieter`, `onboard`)**:
+      - `classroom.css`: 모둠/분단 대형 배경의 채도를 부드럽고 차분하게 완화(`quieter`)하여 학생 카드의 시인성 극대화
+      - `app.js`: 학생이 0명인 신규 학급 생성 시 좌석표 중앙에 친절한 온보딩 가이드(`🪑 등록된 학생이 없습니다. [+ 학생 추가] 버튼을 눌러 학생 명단을 등록하세요.`) 제공
+- **검증 결과**:
+  - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+  - `impeccable doctor`: `No drift found. Every artifact matches what this version reads.` (정합성 100% 완전 일치)
+  - `impeccable detect .`: `0 anti-patterns found.` (디자인 결함 0건 완전 무결 통과)
+
