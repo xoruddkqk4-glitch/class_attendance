@@ -322,3 +322,17 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
 - **검증 결과**:
   - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
   - `impeccable detect .`: 0 anti-patterns (디자인 결함 0건 완전 무결 통과)
+
+## [2026-10-22 09:33] 업데이트 이력 (Commit ID: fd816f9)
+- **수정 내용**:
+  - **Impeccable 25개 전수 검증 통합 스킬 (`/impeccable-all`) 구축**:
+    - 4가지 기본 검증을 넘어 Impeccable 공식 프레임워크가 제공하는 6대 도메인 25가지 모든 세부 검증(System, Evaluation, Visual & Type, Craft & Motion, Robustness & State, Exploration)을 단 한 번의 명령어로 일괄 수행하는 `.agents/skills/impeccable-all/SKILL.md` 신규 제작
+    - 정적 결함 스캔(`detect` & `doctor`) ➜ 25개 축 심층 분석 ➜ `implementation_plan.md` 아티팩트 자동 발행 ➜ `/apply` 대기 상태로 이어지는 올인원 자동화 파이프라인 구현
+    - `AGENTS.md` 및 `GEMINI.md`의 프로젝트 전용 스킬 목록에 6번 항목으로 정식 등재
+  - **왼쪽 '학급 출석부' 사이드바 패널 아코디언 접기/펼치기 기능 구현**:
+    - `index.html`: 사이드바 브랜드 헤더에 접기 버튼(`<button id="sidebarCollapseBtn">❮</button>`) 추가 및 상단바 메뉴 버튼(`☰`)에 접근성 속성(`aria-expanded`, `aria-label`, `title`) 보강
+    - `refinement.css`: 데스크톱 환경에서도 상단 햄버거 메뉴 버튼(`☰`)을 상시 노출하고, 부드러운 가속도 트랜지션(`transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1), width 0.28s`) 및 `body.sidebar-collapsed` 반응형 스타일 적용
+    - `app.js`: `toggleSidebar()`, `updateSidebarAria()` 함수를 구현하고 `localStorage`에 접힘 상태(`sidebar_collapsed`)를 동기화하여 새로고침 시에도 사용자 설정 유지
+- **검증 결과**:
+  - `node -c app.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+
