@@ -400,6 +400,38 @@ body.sidebar-collapsed .menu-button {
   color: var(--accent);
 }
 
+/* Sidebar Expand Tab (Accordion toggle attached to left edge when collapsed) */
+.sidebar-expand-tab {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 96px;
+  z-index: 100;
+  background: var(--navy);
+  color: #c5d2eb;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  width: 28px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  box-shadow: 2px 4px 12px rgba(15, 23, 42, 0.18);
+  transition: all 0.18s ease;
+}
+
+.sidebar-expand-tab:hover {
+  background: #2b3956;
+  color: #ffffff;
+  width: 34px;
+}
+
+body.sidebar-collapsed .sidebar-expand-tab {
+  display: inline-flex;
+}
+
 .view {
   display: none;
   max-width: 1260px;

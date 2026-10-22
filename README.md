@@ -360,3 +360,21 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `impeccable doctor`: `No drift found. Every artifact matches what this version reads.` (정합성 100% 완전 일치)
   - `impeccable detect .`: `0 anti-patterns found.` (디자인 결함 0건 완전 무결 통과)
 
+## [2026-10-22 10:04] 업데이트 이력 (Commit ID: 7c5e219)
+- **수정 내용**:
+  - **왼쪽 '학급 출석부' 사이드바 패널 아코디언 양방향 접기/펼치기 정상화**:
+    - `index.html`: 사이드바 외부에 좌측 가장자리 고정 플로팅 토글 탭(`<button id="sidebarExpandTab">❯</button>`) 추가
+    - `styles.css`: 사이드바 접힘 상태(`body.sidebar-collapsed`) 시 좌측 끝에 단정하고 슬림한 아코디언 토글 핸들이 노출되도록 스타일링 및 호버 애니메이션 적용
+    - `mobile-responsive.css`: 모바일 뷰(`<= 820px`)에서는 상단 햄버거 메뉴 버튼과 충돌하지 않도록 플로팅 탭 숨김 처리
+    - `app.js`: 사이드바 접기 버튼(`❮`)의 단방향 강제 닫힘(`toggleSidebar(true)`) 로직을 상호 토글(`toggleSidebar()`)로 수정하고, 플로팅 탭(`sidebarExpandTab`) 클릭 핸들러 및 `updateSidebarAria` 접근성 속성 동기화
+  - **'수업 중 학습 태도' 화면 가로 폭 밸런싱 및 대시보드 시각 일관성 확보**:
+    - `attitude-layout.css`: `#lesson.view`의 최대 너비를 `1040px`로 통일하여 와이드 모니터에서 교실 좌석 카드가 가로로 과도하게 늘어지던(stretched) 현상 해소
+    - 교사 대시보드의 좌석 배치도와 동일한 최적의 시선 집중 비율을 유지하도록 툴바, 통계 카드, 교실 좌석 카드 여백을 균형 있게 조정
+    - 교실 좌석 카드(`#lesson .seating-card`)의 불필요한 과도 패딩(`42px` ➔ `18px 24px`) 완화 및 좌석 그리드 크기/간격 정돈
+  - **브라우저 캐시 무효화 (Cache Busting)**:
+    - `index.html`: 스타일시트 및 스크립트에 `?v=20261022.2` 쿼리스트링을 적용하여 사용자의 브라우저에서 최신 UI/UX 스타일이 즉각 반영되도록 보장
+- **검증 결과**:
+  - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+  - `impeccable detect .`: `0 anti-patterns found.` (디자인 결함 0건 완전 무결 통과)
+
+
