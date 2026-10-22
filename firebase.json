@@ -21,7 +21,13 @@
       "firestore.rules",
       "node_modules/**",
       ".git/**",
-      ".gitignore"
+      ".gitignore",
+      ".agents/**",
+      ".github/**",
+      ".codex/**",
+      "*.md",
+      "server.js",
+      "excel-export.mjs"
     ],
     "cleanUrls": true
   }

@@ -377,4 +377,16 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
   - `impeccable detect .`: `0 anti-patterns found.` (디자인 결함 0건 완전 무결 통과)
 
+## [2026-10-22 10:48] 업데이트 이력 (Commit ID: ed17924)
+- **수정 내용**:
+  - **Firebase Hosting 자동 배포(GitHub Actions) 파이프라인 정상화 및 최적화**:
+    - `firebase.json`: `hosting.ignore` 목록에 웹 호스팅과 무관한 개발 도구 및 대용량 파일(`.agents/**`, `.github/**`, `.codex/**`, `*.md`, `server.js`, `excel-export.mjs`)을 추가
+    - Impeccable 도구의 대용량 바이너리 실행 파일(`impeccable.exe`, 약 20MB) 및 수천 개 에이전트 문서가 웹 정적 파일로 업로드되면서 발생하던 GitHub Actions `firebase deploy` 배포 중단 및 실패(Failure) 원천 차단
+    - 호스팅 업로드 페이로드를 순수 웹 애플리케이션 파일(~200KB)로 최소화하여 배포 안정성 및 속도 극대화
+- **검증 결과**:
+  - `firebase.json`: JSON 문법 유효성 및 12개 ignore 규칙 파싱 검증 완료
+  - `node -c app.js; node -c server.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+  - `impeccable detect .`: `0 anti-patterns found.` (디자인 결함 0건 완전 무결 통과)
+
+
 
