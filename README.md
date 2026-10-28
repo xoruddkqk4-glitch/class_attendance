@@ -441,10 +441,18 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
 - **검증 결과**:
   - `node -c app.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
 
-
-
-
-
-
+## [2026-10-28 14:40] 업데이트 이력 (Commit ID: 0d6d5a3)
+- **수정 내용**:
+  - **2학기 학급 좌석 배치(`세문영A-01`, `세문영D-01`, `세문영E-01`) 복원 및 학습 태도 기록 100% 보존 (`app.js`)**:
+    - 백업 JSON 파일(`2026-08-27` 기준)의 3개 학급 모둠 대형(`formation: 'group'`), 빈자리 고정(`emptySeats`), 학생별 5자리 학번 기준 좌석 번호(`seat`)를 `restoredClassSeatingPresets` 및 `applyRestoredSeatingPresets`로 안전하게 반영
+    - 학생 고유 `id`, 날짜별 출결 및 학습 태도 점수·메모(`sessions`), 수업 진도(`progress`), 과제·외부활동 제출 기록(`submissionTracker`)은 단 1바이트도 변경하지 않고 그대로 보존
+    - 동일 학번 중복 학생 문서가 존재하는 경우에도 실제 출결·태도 기록이 연결된 학생 ID에 좌석을 우선 매칭하여 충돌 방지
+  - **좌석 전용 Firebase 즉시 저장(`cloudSaveLayoutOnly`) 및 `layouts/current` 좌석 동기화 강화 (`app.js`)**:
+    - 자리 배치 복원 및 `[최종 자리 배정 저장]` 버튼 클릭 시 `lessons` 컬렉션(학습 태도 및 출결 기록)을 건드리지 않고 `layouts/current`와 `students/{studentId}.seat`만 병합(`merge: true`) 저장하는 `cloudSaveLayoutOnly` 구현
+    - `cloudLoad` 실행 시 `layouts/current`의 `studentSeats` 배열을 함께 읽어 들여 1학기 좌석으로 되돌아가는 현상 원천 차단
+  - **캐시 버스팅 버전 갱신 (`index.html`)**:
+    - 스크립트 캐시 버스팅 쿼리스트링을 `app.js?v=20261028.1`로 갱신하여 최신 복원 로직 즉시 반영 보장
+- **검증 결과**:
+  - `node -c app.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
 
 
