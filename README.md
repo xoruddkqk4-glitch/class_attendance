@@ -12,15 +12,17 @@
 
 개발 또는 화면 확인 목적으로 `index.html` 파일을 더블클릭해 브라우저에서 바로 열 수 있습니다. 교사 로그인과 Firebase 동기화에는 인터넷 연결이 필요합니다.
 
-### 엑셀 다운로드를 포함한 로컬 사용
+### 엑셀 다운로드 및 로컬 보조 서버
 
-현재 배포된 웹앱은 정적 Firebase Hosting으로 제공되므로 `.xlsx` 생성 기능은 포함하지 않습니다. `엑셀로 저장` 기능까지 사용하려면 프로젝트 폴더에서 Node.js 로컬 서버를 실행합니다.
+`xlsx-export.js` 내장 OOXML 생성 엔진을 통해 배포된 [학급 출석부 웹앱](https://class-attendance-98a88.web.app)과 로컬 `index.html` 직접 실행 환경에서도 별도 서버 없이 `엑셀로 저장`(`.xlsx`) 기능이 바로 동작합니다.
+
+로컬 보조 서버 환경으로 실행하려면 프로젝트 폴더에서 Node.js 서버를 실행할 수도 있습니다.
 
 ```powershell
 node server.js
 ```
 
-그 뒤 브라우저에서 [http://localhost:8080](http://localhost:8080)을 엽니다. 서버 없이 파일을 직접 열었거나 배포된 웹앱에서 `엑셀로 저장`을 누르면 로컬 서버 실행 방법이 안내됩니다.
+실행 후 브라우저에서 [http://127.0.0.1:8080](http://127.0.0.1:8080)을 엽니다.
 
 ## 주요 기능
 
@@ -107,10 +109,11 @@ classes/{classId}/auditLogs/{logId}
 - 날짜별 출결 기록
 - 날짜별 수업 태도 점수, 메모, 기록 시각
 - 날짜별 수업 진도(교시, 차시, 진도)
+- 과제 제출·외부활동 확인표 항목 열 및 학생별 확인 상태
 
 백업 파일은 `파일에서 불러오기`로 현재 선택한 학급에 복원할 수 있습니다.
 
-`엑셀로 저장`은 선택 기간의 기록을 학생별로 정렬해 `기간 요약`과 `학생별 상세 기록` 시트에 저장합니다.
+`엑셀로 저장`은 선택 기간의 기록을 학급·학번 순으로 정렬해 `기간 요약`(`학급`, `학번`, `이름`, `출석`, `결석`, `지각`, `조퇴`, `총 태도 점수`)과 `학생별 상세 기록` 시트에 저장합니다.
 ## 파일 백업
 
 - `파일에서 불러오기`는 JSON 백업 파일을 현재 선택한 학급으로 복원합니다.
@@ -124,7 +127,7 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
 - 배포 워크플로: `.github/workflows/firebase-deploy.yml`
 - 공개 주소: <https://class-attendance-98a88.web.app>
 
-`엑셀로 저장`은 Firebase Hosting에서 실행되지 않습니다. 이 기능은 `server.js`의 `/export.xlsx` 처리 경로를 사용하므로, Node.js가 설치된 로컬 환경에서 `node server.js`를 실행한 뒤 `http://localhost:8080`으로 접속해야 합니다.
+`엑셀로 저장`은 클라이언트 내장 생성기(`xlsx-export.js`)를 통해 Firebase Hosting 배포 웹앱에서도 서버 없이 즉시 동작합니다. (`server.js`의 `/export.xlsx` 보조 경로도 호환 유지됩니다.)
 
 ## 수업 중 기록
 
@@ -454,5 +457,28 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
     - 스크립트 캐시 버스팅 쿼리스트링을 `app.js?v=20261028.1`로 갱신하여 최신 복원 로직 즉시 반영 보장
 - **검증 결과**:
   - `node -c app.js`: 구문 검사 오류 없이 정상 통과 (Fast Terminal Verification 준수)
+
+## [2026-11-16 15:20] 업데이트 이력 (Commit ID: 5d3d773)
+- **수정 내용**:
+  - **클라이언트·서버 겸용 `.xlsx` 엑셀 생성 엔진 구축 및 집계 버그 해결 (`xlsx-export.js`, `excel-export.mjs`, `package.json`, `app.js`)**:
+    - 비공개 외부 패키지 의존성을 제거하고 순수 JS OOXML `.xlsx` 빌더(`xlsx-export.js`)를 구현하여 Firebase Hosting 정적 웹앱 및 `file://` 환경에서도 서버 없이 즉시 엑셀 다운로드 지원
+    - 동일 날짜 태도 기록 행으로 인해 출결 일수가 중복 합산되던 버그를 `recordType === 'attendance'` 단일 집계로 해결하고 `학급` 열 및 `총 태도 점수` 컬럼 반영
+  - **KST 타임존 날짜 밀림 수정 및 JSON 백업 무결성 보완 (`app.js`)**:
+    - 월초 기본값, `shiftProgressDate`, 기간 단축버튼(`1학기 초`, `2학기 초` 등)의 UTC 변환(`.toISOString()`)으로 인해 한국 시간 기준 날짜가 하루 밀리던 버그를 로컬 `dateKey()`로 전면 교정
+    - JSON 백업(`version: 2`) 및 복원 로직에 `제출·외부활동 확인표(submissionTracker)` 직렬화·복원 추가
+  - **Impeccable 25개 전수 검증 기반 UI/UX 및 접근성(WCAG 2.1 AA) 전면 개선 (`styles.css`, `classroom.css`, `attitude-layout.css`, `records-detail.css`, `auth-admin.css`, `mobile-responsive.css`, `index.html`, `DESIGN.md`)**:
+    - `--status-saved: #047857`, `--radius-pill: 999px` 토큰 도입 및 화이트보드 진도 저장 버튼(`6.85:1`), 저장 완료 버튼(`5.48:1`), 좌석 상태 라벨 등 24개 색상 쌍 모두 WCAG AA(`4.5:1` 이상) 충족
+    - 전역 `:focus-visible` 키보드 포커스 링 및 `@media (prefers-reduced-motion: reduce)` 모션 감속 규칙 적용
+    - 모바일·태블릿 `11px` 미만 초소형 텍스트(`9px`, `10px`) 전면 상향, `tabular-nums` 숫자 정렬, 주요 조작 버튼 터치 타깃 확대
+    - 수업 화면(`#lesson`) 실시간 출결 인원 요약 바(`#attendanceSummary`) 복원(전체 화면 시 자동 숨김), 대시보드 아이브로우 오표기(`교사 대시보드`) 교정, `app.js` 내 인라인 `style="..."` 20건 전량 시맨틱 CSS 클래스로 분리
+  - **코드 클린업 및 보안·배포 설정 강화 (`app.js`, `firestore.rules`, `server.js`, `firebase.json`, `.gitignore`)**:
+    - 중복 이벤트 리스너 통합, `showView()` 탭 전환 일원화, 미사용 데드 코드 및 일회성 좌석 복원 프리셋 상시 실행 코드 정리(`cloudSaveLayoutOnly` 및 클라우드 좌석 동기화는 유지)
+    - `firestore.rules` 학급 `update` 시 `ownerId` 불변 검증 추가, `server.js` `127.0.0.1` 바인딩·`5MB` 요청 제한·`path.relative` 경로 검증 강화, `firebase.json` 배포 제외 목록(`.plan/**`, `package.json`) 및 `.gitignore` 보강
+- **검증 결과**:
+  - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
+  - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 안티패턴 0건 통과
+  - `impeccable doctor`: `No drift found` 규격 정합성 100% 통과
+  - 정밀 검증: `app.js` 인라인 스타일 0건, `11px` 미만 폰트 0건, 24개 색상 쌍 명도 대비 `4.98:1 ~ 8.02:1` 통과, `.xlsx` 생성 및 출결·총점 집계 무결성 확인
+
 
 
