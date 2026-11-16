@@ -495,6 +495,21 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 안티패턴 0건 통과
   - 명도 대비 검증: 신규 버튼 6개 상태 조합 모두 WCAG AA(`5.02:1 ~ 14.63:1`) 통과
 
+## [2026-11-16 15:46] 업데이트 이력 (Commit ID: e3b18e9)
+- **수정 내용**:
+  - **모드별 도구 모음 구성 개편 및 `태도 저장` 기능 추가 (`index.html`, `app.js`)**:
+    - 좌측 `.mode-switch`에 `출석 관리 모드`와 `학습 태도 모드` 두 버튼을 항상 나란히 고정 배치하고, 바로 이어지는 `#attendanceControls`에 선택한 모드에 맞는 도구 모음이 이어서 표시되도록 구성
+    - `출석 관리 모드`: `[출석] [결석] [지각] [조퇴] [출결 저장]` (`출결 저장됨 ✓`)
+    - `학습 태도 모드`: `[전원 +1점] [+1점] [0점] [-1점] [전원 -1점] [태도 저장]` (`태도 저장됨 ✓`)
+    - `sessions/{date}.attitudeSaved`를 로컬 저장·Firestore(`cloudSave`/`cloudLoad`)·`savedLessonDates()`와 연동하고, 새 태도 기록 추가 시 미저장 상태로 자동 초기화되도록 구현
+  - **전 해상도 1행 고정 레이아웃 및 캐시 버스팅 (`classroom.css`, `attitude-layout.css`, `mobile-responsive.css`, `index.html`)**:
+    - `.status-controls`의 우측 밀림(`margin-left: auto`)을 제거해 모드 스위치 바로 옆에 이어지게 하고, `#lesson .perspective-switch`에 `margin-left: auto`를 적용해 시점 전환·전체 화면 버튼만 우측 끝에 배치
+    - 데스크톱·태블릿·전체 화면·모바일(`<= 820px`) 전 구간에 `flex-wrap: nowrap; flex-shrink: 0` 및 좁은 화면 1행 가로 스크롤(`overflow-x: auto`)을 적용해 모드 전환 시에도 줄바꿈 없이 항상 1행을 유지하고 `?v=20261116.3`으로 갱신
+- **검증 결과**:
+  - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
+  - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 안티패턴 0건 통과
+
+
 
 
 
