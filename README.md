@@ -480,5 +480,21 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `impeccable doctor`: `No drift found` 규격 정합성 100% 통과
   - 정밀 검증: `app.js` 인라인 스타일 0건, `11px` 미만 폰트 0건, 24개 색상 쌍 명도 대비 `4.98:1 ~ 8.02:1` 통과, `.xlsx` 생성 및 출결·총점 집계 무결성 확인
 
+## [2026-11-16 15:29] 업데이트 이력 (Commit ID: 5cc7b7f)
+- **수정 내용**:
+  - **'수업 중 학습 태도' 툴바 버튼 위치 맞교환 (`index.html`, `app.js`)**:
+    - 좌측 `.mode-switch` 영역에서 `출석 관리 모드` 바로 오른쪽에 `출결 저장` 버튼을 배치하고, 우측 `#attendanceControls` 영역 맨 앞(기존 `출결 저장` 위치)으로 `학습 태도 모드` 버튼을 이동해 두 버튼의 위치를 맞바꿈
+    - `renderModeControls()`, `render()` 동기화 및 `#lesson .lesson-toolbar` 단일 클릭 이벤트 위임으로 모드 전환·출결 저장·상태/점수 버튼 인터액션을 안정적으로 통합
+  - **모드 버튼 배경색 차별화 및 대비 확보 (`classroom.css`, `attitude-layout.css`)**:
+    - `출석 관리 모드`: 인디고 블루 계열(비활성 `#e0e7ff` / 글자 `#312e81` `9.27:1`, 활성 `#4f46e5` / 글자 `#ffffff` `6.29:1`)
+    - `학습 태도 모드`: 웜 앰버 골드 계열(비활성 `#fef3c7` / 글자 `#78350f` `8.15:1`, 활성 `#b45309` / 글자 `#ffffff` `5.02:1`)
+    - `출결 저장`: 미저장 화이트 슬레이트(`#ffffff` / `#1e293b` `14.63:1`), 저장 완료 에메랄드(`#047857` / `#ffffff` `5.48:1`)
+    - `#lesson .status-controls button:not(.mode-btn).active`로 특이성 충돌을 방지하고 `?v=20261116.2` 캐시 버스팅 적용
+- **검증 결과**:
+  - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
+  - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 안티패턴 0건 통과
+  - 명도 대비 검증: 신규 버튼 6개 상태 조합 모두 WCAG AA(`5.02:1 ~ 14.63:1`) 통과
+
+
 
 
