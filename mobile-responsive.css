@@ -31,14 +31,15 @@
   .period-controls label { flex: 1 1 130px; min-width: 0; }
   .period-controls input { min-width: 0; }
   .lesson-toolbar { gap: 8px; padding: 9px; }
+  .summary-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
   .mode-switch, .status-controls, .perspective-switch { max-width: 100%; flex-wrap: wrap; }
   #lesson .status-controls { min-width: 0; margin-left: 0; }
   #fullscreenButton { margin-left: auto; width: auto; }
   #lesson .seating-card { min-height: 0; padding: 12px !important; }
   #lesson .seating-grid { width: 100%; min-width: 0; grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }
   #lesson .seat, #lesson .student-card { min-width: 0; }
-  #lesson .student-number { font-size: 9px; }
-  #lesson .student-name { min-width: 0; font-size: 10px; }
+  #lesson .student-number { font-size: 11px; }
+  #lesson .student-name { min-width: 0; font-size: 11px; }
   .record-detail-head, .record-detail-row { min-width: 0; }
   .record-detail-row span { overflow-wrap: anywhere; }
 }
@@ -56,13 +57,18 @@ body.lesson-focus-mode #lesson .page-heading { display: none !important; }
 #lesson:fullscreen .progress-note,
 #lesson:-webkit-full-screen .progress-note,
 body.lesson-focus-mode #lesson .progress-note { display: none !important; }
+#lesson:fullscreen .summary-row,
+#lesson:-webkit-full-screen .summary-row,
+body.lesson-focus-mode #lesson .summary-row { display: none !important; }
 
 /* Older iPad Safari drops a whole comma-separated selector list when it sees
    the unsupported :fullscreen pseudo-class.  Keep its fallback rules alone. */
 body.lesson-focus-mode #lesson .page-heading,
-body.lesson-focus-mode #lesson .progress-note { display: none !important; }
+body.lesson-focus-mode #lesson .progress-note,
+body.lesson-focus-mode #lesson .summary-row { display: none !important; }
 #lesson:-webkit-full-screen .page-heading,
-#lesson:-webkit-full-screen .progress-note { display: none !important; }
+#lesson:-webkit-full-screen .progress-note,
+#lesson:-webkit-full-screen .summary-row { display: none !important; }
 #lesson:fullscreen .lesson-toolbar,
 body.lesson-focus-mode #lesson .lesson-toolbar {
   flex: 0 0 auto; width: 100%; max-width: none; margin: 0 0 8px; padding: 8px;
@@ -94,6 +100,6 @@ body.lesson-focus-mode #lesson dialog[open] { position: fixed !important; inset:
   #lesson:fullscreen .seating-card, body.lesson-focus-mode #lesson .seating-card { height: calc(100vh - 122px) !important; height: calc(100dvh - 122px) !important; }
   #lesson:fullscreen .mode-switch, #lesson:fullscreen .status-controls, #lesson:fullscreen .perspective-switch,
   body.lesson-focus-mode #lesson .mode-switch, body.lesson-focus-mode #lesson .status-controls, body.lesson-focus-mode #lesson .perspective-switch { flex-wrap: wrap; }
-  #lesson:fullscreen .student-number, body.lesson-focus-mode #lesson .student-number { font-size: 10px; }
-  #lesson:fullscreen .student-name, body.lesson-focus-mode #lesson .student-name { font-size: 11px; }
+  #lesson:fullscreen .student-number, body.lesson-focus-mode #lesson .student-number { font-size: 11px; }
+  #lesson:fullscreen .student-name, body.lesson-focus-mode #lesson .student-name { font-size: 12px; }
 }

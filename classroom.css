@@ -199,11 +199,12 @@
 
 .student-number {
   font-size: var(--font-micro);
-  color: #5261d3;
+  color: #4338ca;
   background: #eff1ff;
   display: grid;
   place-items: center;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
@@ -223,24 +224,24 @@
   position: absolute;
   bottom: 2px;
   right: 5px;
-  font-size: 10px;
+  font-size: var(--font-micro);
   font-weight: 700;
 }
 
 .seat-status.present {
-  color: #1e9982;
+  color: #0f766e;
 }
 
 .seat-status.late {
-  color: #cf8d1d;
+  color: #b45309;
 }
 
 .seat-status.absent {
-  color: #d6584c;
+  color: #b91c1c;
 }
 
 .seat-status.early {
-  color: #5544cf;
+  color: #4338ca;
 }
 
 .seat-status.unset {
@@ -415,8 +416,8 @@
 }
 
 .attendance-save.is-saved {
-  background: #23ad83;
-  box-shadow: 0 2px 6px rgba(35, 173, 131, 0.25);
+  background: var(--status-saved);
+  box-shadow: 0 2px 6px rgba(4, 120, 87, 0.24);
 }
 
 .mode-hint {
@@ -435,7 +436,7 @@
 .student-table-head,
 .student-row {
   display: grid;
-  grid-template-columns: 80px 1fr 140px 48px;
+  grid-template-columns: 76px minmax(0, 1fr) 120px 38px;
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
@@ -453,6 +454,17 @@
   font-size: var(--font-body);
 }
 
+.student-row span:first-child {
+  font-variant-numeric: tabular-nums;
+}
+
+.student-row b {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .student-row:last-child {
   border: 0;
 }
@@ -460,14 +472,20 @@
 .student-row button {
   border: 0;
   background: transparent;
-  color: #cc6059;
+  color: #b91c1c;
   font-size: 18px;
   cursor: pointer;
   line-height: 1;
+  width: 36px;
+  height: 36px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
 }
 
 .student-row button:hover {
-  color: #b91c1c;
+  background: #fef2f2;
+  color: #991b1b;
 }
 
 /* Onboarding Empty Grid State */

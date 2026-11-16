@@ -2,3 +2,10 @@ node_modules/
 .firebase/
 firebase-debug.log
 *.inspect.ndjson
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+.env
+.env.*
+.impeccable/config.local.json

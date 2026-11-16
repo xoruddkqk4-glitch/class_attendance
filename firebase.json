@@ -26,6 +26,8 @@
       ".github/**",
       ".codex/**",
       "*.md",
+      ".plan/**",
+      "package.json",
       "server.js",
       "excel-export.mjs",
       "legacy_css/**"

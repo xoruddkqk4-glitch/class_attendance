@@ -24,15 +24,21 @@
 | `--accent` | `#4f46e5` | 주 액션 버튼, 활성 탭 인디케이터, 링크 (대비 5.2:1) |
 | `--accent-bg` | `#eef0ff` | 보조 버튼 배경, 선택된 항목 하이라이트 |
 | `--accent-hover` | `#4338ca` | 마우스 호버 및 포커스 액센트 |
+| `--status-saved` | `#047857` | 저장 완료 버튼 및 확인 상태 배경 (화이트 대비 5.48:1) |
 
 ### 상태 컬러 (Attendance Semantics)
 | 상태 | 토큰 및 코드 | 의미 및 배지 스타일 |
 | :--- | :--- | :--- |
-| **출석 (Present)** | `--mint: #3dbca5;` | 정상 출석 (배경: `#e6f8f4`, 텍스트: `#1e9982`) |
-| **지각 (Late)** | `--amber: #e8a536;` | 지각 (배경: `#fff4db`, 텍스트: `#cf8d1d`) |
-| **결석 (Absent)** | `--coral: #f07c72;` | 결석 (배경: `#ffebe9`, 텍스트: `#d6584c`) |
-| **조퇴 (Early)** | `--status-early: #6366f1;` | 조퇴 (배경: `#eef2ff`, 텍스트: `#5544cf`) |
-| **미체크 (Unset)** | `#8b95a5` | 미설정 (배경: `#eff1f4`, 텍스트: `#7b889a`) |
+| **출석 (Present)** | `--mint: #3dbca5;` | 정상 출석 (배경: `#e6f8f4`, 고대비 텍스트: `#0f766e`) |
+| **지각 (Late)** | `--amber: #e8a536;` | 지각 (배경: `#fff4db`, 고대비 텍스트: `#b45309` / 요약 아이콘 `#9a5806`) |
+| **결석 (Absent)** | `--coral: #f07c72;` | 결석 (배경: `#ffebe9`, 고대비 텍스트: `#b91c1c`) |
+| **조퇴 (Early)** | `--status-early: #6366f1;` | 조퇴 (배경: `#eef2ff`, 고대비 텍스트: `#4338ca`) |
+| **미체크 (Unset)** | `#526071` | 미설정 (배경: `#eff1f4`, 텍스트: `var(--muted)`) |
+
+### 곡률 및 접근성 표준 (Radius & Accessibility)
+- **표준 곡률**: `--radius-sm` (`8px`), `--radius-md` (`12px`), `--radius-lg` (`16px`), `--radius-pill` (`999px`, 필터 칩·상태 배지·토스트 전용)
+- **키보드 포커스**: 전역 `:focus-visible`에 `2px solid var(--accent)`, `outline-offset: 2px` 적용
+- **모션 감속**: `@media (prefers-reduced-motion: reduce)`에서 모든 트랜지션·애니메이션 즉시 완료 처리
 
 ### 화이트보드 웜 샌드 팔레트 (Progress Whiteboard)
 | 토큰명 | 색상값 | 용도 |
