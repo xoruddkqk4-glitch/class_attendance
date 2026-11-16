@@ -411,33 +411,39 @@
 }
 
 #lesson #attendanceControls {
-  width: 292px;
-  min-width: 292px;
-  max-width: 292px;
+  flex: 1 1 0%;
+  width: auto;
+  min-width: 320px;
+  max-width: none;
   height: 38px;
-  gap: 2px;
+  gap: 4px;
   padding: 3px;
   box-sizing: border-box;
 }
 
 #lesson #attendanceControls button[data-status] {
-  flex: 1 1 0;
+  flex: 1 1 0%;
   min-width: 0;
-  padding: 0 4px;
-  font-size: var(--font-caption);
-}
-
-#lesson #attendanceControls button[data-attitude-action] {
-  flex: 1 1 auto;
-  min-width: 0;
-  padding: 0 3px;
-  font-size: 10px;
-  letter-spacing: -0.35px;
+  padding: 0 8px;
+  font-size: 13px;
   font-weight: 600;
 }
 
+#lesson #attendanceControls button[data-attitude-action] {
+  flex: 0.95 1 0%;
+  min-width: 0;
+  padding: 0 6px;
+  font-size: var(--font-caption);
+  letter-spacing: -0.2px;
+  font-weight: 600;
+}
+
+#lesson #attendanceControls button[data-attitude-action^="all-"] {
+  flex: 1.35 1 0%;
+}
+
 #lesson .perspective-switch {
-  margin-left: auto;
+  margin-left: 0;
 }
 
 #lesson #fullscreenButton {
@@ -497,11 +503,11 @@
 }
 
 #lesson .lesson-toolbar .attendance-save {
-  flex: 0 0 98px;
-  width: 98px;
+  flex: 0 0 106px;
+  width: 106px;
   height: 32px;
-  margin-left: auto;
-  padding: 0 6px;
+  margin-left: 4px;
+  padding: 0 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
