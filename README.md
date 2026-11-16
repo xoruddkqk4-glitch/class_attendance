@@ -521,6 +521,22 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
   - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 안티패턴 0건 통과
 
+## [2026-11-16 16:29] 업데이트 이력 (Commit ID: 45abe1e)
+- **수정 내용**:
+  - **수업 툴바 유휴 공간 활용 및 모드 간 우측 끝 정렬 고정 (`classroom.css`)**:
+    - `#lesson #attendanceControls`의 고정 폭(`292px`) 제한을 제거하고 `flex: 1 1 0%; min-width: 320px; max-width: none;`으로 확장해 모드 스위치와 `선생님 시점` 사이의 빈 공간까지 폭넓게 활용하도록 개선
+    - `#lesson .perspective-switch`의 `margin-left: auto`를 `0`으로 조정하고 `.attendance-save`를 `flex: 0 0 106px; width: 106px; margin-left: 4px;`로 고정해 `'출석 관리 모드'`(`출결 저장` / `출결 저장됨 ✓`)와 `'학습 태도 모드'`(`태도 저장` / `태도 저장됨 ✓`) 전환 시 우측 끝 위치와 툴바 전체 크기가 `0px` 오차로 일치하도록 정렬
+    - 확보된 여유 폭에 맞춰 출결 상태 버튼은 `13px`, 태도 점수 버튼은 `12px`(`전원 +1점`/`전원 -1점` `flex: 1.35 1 0%`, `+1점`/`0점`/`-1점` `flex: 0.95 1 0%`)로 가독성을 복원하고 `10px` 이하 초소형 폰트 제거
+  - **모바일·태블릿 및 전체 화면 반응형 레이아웃 전면 보완 (`mobile-responsive.css`, `index.html`)**:
+    - `821px~1100px` 사이드바 펼침 구간에서 수업 툴바가 가로 잘림 없이 2행(`모드 스위치 + 시점/전체 화면` / `제어 버튼 + 저장`)으로 정돈되도록 구성
+    - `<= 820px` 구간에서 상단 `.top-actions` 그리드를 `repeat(2, minmax(0, 1fr))`로 교정하고 `.top-actions .top-action`으로 선택자 범위를 한정해 타 영역 버튼 확장 버그를 해결했으며, `.page-heading` 세로 적재(`flex-direction: column`), 좌석 그리드 간격 축소, 수업 툴바 2행 full-width 배치를 적용
+    - `<= 560px` 소형 스마트폰(`360px+`)에서 수업 툴바 3행 고정 배치(모드 전환 50:50 / 제어+저장 `86px` 우측 고정 / 시점 전환+전체 화면)와 대시보드 명단 테이블·대형 옵션 간격 최적화를 적용
+    - 전체 화면(`#lesson:fullscreen`, `#lesson:-webkit-full-screen`, `body.lesson-focus-mode #lesson`)을 구형 iPad Safari 호환 개별 선택자 블록으로 분리 유지하고 Flexbox 세로 레이아웃(`.seating-card { flex: 1 1 0% !important }`)으로 전환해 다중 행 모바일 툴바에서도 좌석 그리드 세로 잘림 방지, 에셋 캐시 버전 `?v=20261116.5` 갱신
+- **검증 결과**:
+  - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
+  - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 정적 검사 이슈 0건 통과
+  - CSS 정적 점검: 6개 CSS 파일 중괄호 균형 정상, `11px` 미만 폰트(아이콘 숨김용 `0` 제외) 0건, `index.html` 버전 쿼리(`?v=20261116.5`) 8건 일치 확인
+
 
 
 
