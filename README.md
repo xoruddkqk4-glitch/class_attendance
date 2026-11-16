@@ -509,6 +509,19 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
   - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 안티패턴 0건 통과
 
+## [2026-11-16 16:12] 업데이트 이력 (Commit ID: 2a8f259)
+- **수정 내용**:
+  - **모드 전환 시 컨트롤 박스 가로폭(`292px`) 및 저장 버튼 우측 끝 위치 고정 (`classroom.css`, `attitude-layout.css`, `mobile-responsive.css`)**:
+    - `#lesson #attendanceControls`의 가로 폭과 높이를 `width: 292px; height: 38px; gap: 2px; padding: 3px;`로 고정해 `'출석 관리 모드'`와 `'학습 태도 모드'` 전환 시에도 전체 버튼 영역의 가로 길이가 변하지 않도록 구성
+    - `#lesson .lesson-toolbar .attendance-save`를 `flex: 0 0 98px; width: 98px; height: 32px; margin-left: auto;`로 고정하여 `출결 저장`(`출결 저장됨 ✓`)과 `태도 저장`(`태도 저장됨 ✓`) 버튼의 오른쪽 끝 위치가 항상 동일하게 일치하도록 정렬
+    - `.mode-switch`, `.status-controls`, `.perspective-switch`, `#fullscreenButton` 높이를 `38px`(내부 버튼 `32px`)로 통일하고 기존 `#lesson .status-controls`의 `min-width: max-content` 충돌을 제거
+  - **태도 점수 버튼 타이포그래피 최적화 및 캐시 버스팅 (`classroom.css`, `index.html`)**:
+    - 태도 점수 버튼 5종(`button[data-attitude-action]`: `전원 +1점`, `+1점`, `0점`, `-1점`, `전원 -1점`)의 글자 크기를 `10px`, `letter-spacing: -0.35px`, `padding: 0 3px`로 조정해 동일한 `292px` 영역 안에 여유 있게 정렬되도록 개선하고 `?v=20261116.4`로 갱신
+- **검증 결과**:
+  - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
+  - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 안티패턴 0건 통과
+
+
 
 
 
