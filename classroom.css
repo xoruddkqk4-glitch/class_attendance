@@ -351,13 +351,17 @@
 .lesson-toolbar {
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-wrap: nowrap;
+  gap: 8px;
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  padding: 10px 14px;
+  padding: 8px 12px;
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(30, 42, 67, 0.03);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
 }
 
 .mode-switch,
@@ -365,7 +369,9 @@
 .perspective-switch {
   display: flex;
   align-items: center;
-  gap: 4px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 3px;
   background: #f0f2f6;
   padding: 3px;
   border-radius: var(--radius-sm);
@@ -376,7 +382,7 @@
 .perspective-switch button {
   border: 0;
   background: transparent;
-  padding: 7px 11px;
+  padding: 6px 10px;
   font: 600 var(--font-caption) inherit;
   color: var(--muted);
   border-radius: 6px;
@@ -393,8 +399,18 @@
 }
 
 .status-controls {
-  margin-left: auto;
+  margin-left: 0;
   align-items: center;
+}
+
+#lesson .perspective-switch {
+  margin-left: auto;
+}
+
+#lesson #fullscreenButton {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 7px 11px;
 }
 
 .status-controls span {
@@ -443,7 +459,7 @@
 }
 
 #lesson .lesson-toolbar .attendance-save {
-  padding: 7px 12px;
+  padding: 6px 10px;
   border-radius: 6px;
   border: 1px solid #cbd5e1;
   background: #ffffff;

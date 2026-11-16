@@ -30,11 +30,11 @@
   .period-controls { flex-wrap: wrap; }
   .period-controls label { flex: 1 1 130px; min-width: 0; }
   .period-controls input { min-width: 0; }
-  .lesson-toolbar { gap: 8px; padding: 9px; }
+  .lesson-toolbar { gap: 6px; padding: 8px; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
   .summary-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
-  .mode-switch, .status-controls, .perspective-switch { max-width: 100%; flex-wrap: wrap; }
-  #lesson .status-controls { min-width: 0; margin-left: 0; }
-  #fullscreenButton { margin-left: auto; width: auto; }
+  .mode-switch, .status-controls, .perspective-switch { max-width: none; flex-wrap: nowrap; flex-shrink: 0; }
+  #lesson .status-controls { min-width: max-content; margin-left: 0; }
+  #fullscreenButton { margin-left: 0; width: auto; flex-shrink: 0; white-space: nowrap; }
   #lesson .seating-card { min-height: 0; padding: 12px !important; }
   #lesson .seating-grid { width: 100%; min-width: 0; grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }
   #lesson .seat, #lesson .student-card { min-width: 0; }
@@ -72,7 +72,7 @@ body.lesson-focus-mode #lesson .summary-row { display: none !important; }
 #lesson:fullscreen .lesson-toolbar,
 body.lesson-focus-mode #lesson .lesson-toolbar {
   flex: 0 0 auto; width: 100%; max-width: none; margin: 0 0 8px; padding: 8px;
-  gap: 7px; flex-wrap: wrap;
+  gap: 7px; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
 }
 #lesson:fullscreen .seating-card,
 body.lesson-focus-mode #lesson .seating-card {
@@ -99,7 +99,7 @@ body.lesson-focus-mode #lesson dialog[open] { position: fixed !important; inset:
   #lesson:fullscreen .lesson-toolbar, body.lesson-focus-mode #lesson .lesson-toolbar { overflow-y: auto; }
   #lesson:fullscreen .seating-card, body.lesson-focus-mode #lesson .seating-card { height: calc(100vh - 122px) !important; height: calc(100dvh - 122px) !important; }
   #lesson:fullscreen .mode-switch, #lesson:fullscreen .status-controls, #lesson:fullscreen .perspective-switch,
-  body.lesson-focus-mode #lesson .mode-switch, body.lesson-focus-mode #lesson .status-controls, body.lesson-focus-mode #lesson .perspective-switch { flex-wrap: wrap; }
+  body.lesson-focus-mode #lesson .mode-switch, body.lesson-focus-mode #lesson .status-controls, body.lesson-focus-mode #lesson .perspective-switch { flex-wrap: nowrap; flex-shrink: 0; }
   #lesson:fullscreen .student-number, body.lesson-focus-mode #lesson .student-number { font-size: 11px; }
   #lesson:fullscreen .student-name, body.lesson-focus-mode #lesson .student-name { font-size: 12px; }
 }

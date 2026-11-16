@@ -1,6 +1,6 @@
 /* 학습 태도 기록과 자리배치에 집중할 수 있도록 수업 화면의 여백을 재구성합니다. */
 #lesson .page-heading{margin-bottom:18px}
-#lesson .lesson-toolbar{margin-bottom:14px}
+#lesson .lesson-toolbar{margin-bottom:14px;flex-wrap:nowrap}
 #lesson .summary-row{margin-bottom:16px}
 #lesson .status-controls{min-width:max-content}
 #lesson .status-controls button{white-space:nowrap}
