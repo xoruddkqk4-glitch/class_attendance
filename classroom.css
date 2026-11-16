@@ -364,6 +364,7 @@
 .status-controls,
 .perspective-switch {
   display: flex;
+  align-items: center;
   gap: 4px;
   background: #f0f2f6;
   padding: 3px;
@@ -384,8 +385,7 @@
   white-space: nowrap;
 }
 
-.mode-switch button.active,
-.status-controls button.active,
+.status-controls button:not(.mode-btn).active,
 .perspective-switch button.active {
   background: #ffffff;
   color: var(--accent);
@@ -404,20 +404,70 @@
   font-weight: 700;
 }
 
-.attendance-save {
+#lesson .lesson-toolbar button[data-mode="attendance"] {
+  background: #e0e7ff;
+  border: 1px solid #a5b4fc;
+  color: #312e81;
+  font-weight: 700;
+}
+
+#lesson .lesson-toolbar button[data-mode="attendance"]:hover:not(.active) {
+  background: #c7d2fe;
+  border-color: #818cf8;
+}
+
+#lesson .lesson-toolbar button[data-mode="attendance"].active {
+  background: var(--accent);
+  border-color: var(--accent-hover);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.28);
+}
+
+#lesson .lesson-toolbar button[data-mode="attitude"] {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #78350f;
+  font-weight: 700;
+}
+
+#lesson .lesson-toolbar button[data-mode="attitude"]:hover:not(.active) {
+  background: #fde68a;
+  border-color: #d97706;
+}
+
+#lesson .lesson-toolbar button[data-mode="attitude"].active {
+  background: #b45309;
+  border-color: #92400e;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.26);
+}
+
+#lesson .lesson-toolbar .attendance-save {
   padding: 7px 12px;
   border-radius: 6px;
-  border: 0;
-  background: var(--accent);
-  color: #ffffff;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: var(--ink);
   font: 700 var(--font-caption) inherit;
   cursor: pointer;
   transition: all 0.16s ease;
 }
 
-.attendance-save.is-saved {
+#lesson .lesson-toolbar .attendance-save:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+#lesson .lesson-toolbar .attendance-save.is-saved {
   background: var(--status-saved);
+  border-color: #065f46;
+  color: #ffffff;
   box-shadow: 0 2px 6px rgba(4, 120, 87, 0.24);
+}
+
+#lesson .lesson-toolbar .attendance-save.is-saved:hover {
+  background: #065f46;
+  border-color: #064e3b;
 }
 
 .mode-hint {
