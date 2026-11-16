@@ -371,6 +371,8 @@
   align-items: center;
   flex-wrap: nowrap;
   flex-shrink: 0;
+  height: 38px;
+  box-sizing: border-box;
   gap: 3px;
   background: #f0f2f6;
   padding: 3px;
@@ -382,7 +384,12 @@
 .perspective-switch button {
   border: 0;
   background: transparent;
-  padding: 6px 10px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 10px;
   font: 600 var(--font-caption) inherit;
   color: var(--muted);
   border-radius: 6px;
@@ -403,14 +410,45 @@
   align-items: center;
 }
 
+#lesson #attendanceControls {
+  width: 292px;
+  min-width: 292px;
+  max-width: 292px;
+  height: 38px;
+  gap: 2px;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+#lesson #attendanceControls button[data-status] {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 4px;
+  font-size: var(--font-caption);
+}
+
+#lesson #attendanceControls button[data-attitude-action] {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0 3px;
+  font-size: 10px;
+  letter-spacing: -0.35px;
+  font-weight: 600;
+}
+
 #lesson .perspective-switch {
   margin-left: auto;
 }
 
 #lesson #fullscreenButton {
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   flex-shrink: 0;
   white-space: nowrap;
-  padding: 7px 11px;
+  padding: 0 11px;
 }
 
 .status-controls span {
@@ -459,14 +497,21 @@
 }
 
 #lesson .lesson-toolbar .attendance-save {
-  padding: 6px 10px;
+  flex: 0 0 98px;
+  width: 98px;
+  height: 32px;
+  margin-left: auto;
+  padding: 0 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
   border: 1px solid #cbd5e1;
   background: #ffffff;
   color: var(--ink);
   font: 700 var(--font-caption) inherit;
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
 }
 
 #lesson .lesson-toolbar .attendance-save:hover {

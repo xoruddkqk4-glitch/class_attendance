@@ -33,7 +33,7 @@
   .lesson-toolbar { gap: 6px; padding: 8px; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
   .summary-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
   .mode-switch, .status-controls, .perspective-switch { max-width: none; flex-wrap: nowrap; flex-shrink: 0; }
-  #lesson .status-controls { min-width: max-content; margin-left: 0; }
+  #lesson .status-controls { margin-left: 0; }
   #fullscreenButton { margin-left: 0; width: auto; flex-shrink: 0; white-space: nowrap; }
   #lesson .seating-card { min-height: 0; padding: 12px !important; }
   #lesson .seating-grid { width: 100%; min-width: 0; grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }

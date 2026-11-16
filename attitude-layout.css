@@ -2,7 +2,6 @@
 #lesson .page-heading{margin-bottom:18px}
 #lesson .lesson-toolbar{margin-bottom:14px;flex-wrap:nowrap}
 #lesson .summary-row{margin-bottom:16px}
-#lesson .status-controls{min-width:max-content}
 #lesson .status-controls button{white-space:nowrap}
 #lesson .status-controls button:not(.mode-btn).active{background:#fff;color:var(--accent);box-shadow:0 1px 4px rgba(22,35,74,.12)}
 #lesson .seating-card{min-height:clamp(520px,66vh,740px);padding:18px 24px!important}
