@@ -537,8 +537,16 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `impeccable detect .` (25개 파일) & `impeccable detect index.html`: 정적 검사 이슈 0건 통과
   - CSS 정적 점검: 6개 CSS 파일 중괄호 균형 정상, `11px` 미만 폰트(아이콘 숨김용 `0` 제외) 0건, `index.html` 버전 쿼리(`?v=20261116.5`) 8건 일치 확인
 
-
-
-
-
+## [2026-11-17 10:54] 업데이트 이력 (Commit ID: c97c55b)
+- **수정 내용**:
+  - **전체 화면 보기 시점별 교탁 배치 방향 교정 (`mobile-responsive.css`, `classroom.css`)**:
+    - `#lesson:fullscreen .seating-card`, `#lesson:-webkit-full-screen .seating-card`, `body.lesson-focus-mode #lesson .seating-card`의 `flex-direction: column`이 일반 화면 `.lesson-classroom`(`column-reverse`)을 덮어써 선생님 시점에서도 교탁이 상단에 표시되던 문제를 수정
+    - 구형 iPad Safari 호환을 위해 개별 선택자 블록을 유지하면서 기본값(선생님 시점)을 `flex-direction: column-reverse;`로 교정해 교탁을 화면 하단에 배치하고, `.seating-card.student-perspective` 개별 블록 3개를 추가해 학생 시점일 때만 `flex-direction: column;`으로 상단에 배치되도록 분리
+    - `.teacher-desk`에 `flex-shrink: 0;`을 추가해 전체 화면 Flex 레이아웃에서 교탁 높이 수축을 방지
+  - **빈 학급 시점 전환 방어 처리 및 캐시 버스팅 (`app.js`, `index.html`)**:
+    - `grid()` 함수에서 등록된 학생이 0명일 때 조기 반환하기 전에 `#lessonClassroom`의 `.student-perspective` 클래스를 먼저 동기화하고, 학생이 있을 때만 `student-view`(`180deg` 회전)를 부여해 빈 학급 안내 문구가 뒤집히지 않도록 개선
+    - 정적 리소스 버전 쿼리 8건을 `?v=20261117.1`로 일괄 갱신
+- **검증 결과**:
+  - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
+  - CSS/HTML 정적 점검: 6개 CSS 파일 중괄호 균형 정상(`balanced=True`), `index.html` 버전 쿼리(`?v=20261117.1`) 8건 일치 확인
 
