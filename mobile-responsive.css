@@ -130,7 +130,7 @@ body.lesson-focus-mode #lesson .lesson-toolbar {
   margin: 0;
   padding: 12px !important;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 #lesson:-webkit-full-screen .seating-card {
@@ -141,7 +141,7 @@ body.lesson-focus-mode #lesson .lesson-toolbar {
   margin: 0;
   padding: 12px !important;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 body.lesson-focus-mode #lesson .seating-card {
@@ -152,6 +152,18 @@ body.lesson-focus-mode #lesson .seating-card {
   margin: 0;
   padding: 12px !important;
   display: flex;
+  flex-direction: column-reverse;
+}
+
+#lesson:fullscreen .seating-card.student-perspective {
+  flex-direction: column;
+}
+
+#lesson:-webkit-full-screen .seating-card.student-perspective {
+  flex-direction: column;
+}
+
+body.lesson-focus-mode #lesson .seating-card.student-perspective {
   flex-direction: column;
 }
 

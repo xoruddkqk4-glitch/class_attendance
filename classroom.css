@@ -89,6 +89,7 @@
   font-size: var(--font-caption);
   font-weight: 700;
   width: 160px;
+  flex-shrink: 0;
   text-align: center;
   padding: 9px 12px;
   border-radius: var(--radius-sm);
