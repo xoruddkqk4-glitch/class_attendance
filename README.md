@@ -550,3 +550,18 @@ Firebase Hosting은 정적 파일을 배포합니다. GitHub의 `main` 브랜치
   - `npm run check` (`node --check app.js && node --check xlsx-export.js && node --check server.js && node --check excel-export.mjs`): 구문 오류 0건 정상 통과
   - CSS/HTML 정적 점검: 6개 CSS 파일 중괄호 균형 정상(`balanced=True`), `index.html` 버전 쿼리(`?v=20261117.1`) 8건 일치 확인
 
+
+## [2026-11-23 10:49] 업데이트 이력 (Commit ID: ebeef4e)
+- **수정 내용**:
+  - **전체 화면 선생님 시점 교탁 표시 수정 (`mobile-responsive.css`)**:
+    - `#lesson:fullscreen`, `#lesson:-webkit-full-screen`, `body.lesson-focus-mode #lesson`에서 `.seating-grid`의 `height: 100%`로 인해 `flex-direction: column-reverse` 상태의 선생님 시점에서 교탁(`.classroom-desk`)이 하단으로 밀려 잘리던 문제를 수정
+    - `.seating-card`에 `flex: 1 1 0 !important; overflow: hidden;`, `.seating-grid`에 `flex: 1 1 0; height: auto;`를 적용하고 `.classroom-desk`에 `flex: 0 0 auto` 및 시점별 여백(`margin: 10px auto 0` / 학생 시점 `margin: 0 auto 10px`)을 명시
+  - **출결 요약 카드 결석·지각·조퇴 학생 명단 표시 (`app.js`, `styles.css`)**:
+    - `renderSummary()`에서 학생을 학번 순으로 정렬해 출결 상태별로 분류하고, `출석`은 인원수만 유지하되 `결석`, `지각`, `조퇴`는 해당 학생이 1명 이상일 때 카드 하단에 학번·이름 칩(`.summary-student-chip`) 목록을 표시하도록 구현
+    - 상태별 시맨틱 컬러 칩 스타일 및 최대 높이 스크롤(`max-height: 76px; overflow-y: auto`) 추가
+  - **모드별 액션 버튼 파스텔 배경색 적용 및 캐시 갱신 (`classroom.css`, `index.html`)**:
+    - 출석 관리 모드 버튼(`출석`, `결석`, `지각`, `조퇴`)에 출석 관리 모드와 동일한 인디고 계열 파스텔 배경(`#e8edff`, 테두리 `#c7d2fe`)과 선택(`.active`) 강조 스타일 적용
+    - 학습 태도 모드 버튼(`전원 +1점`~`전원 -1점`)에 학습 태도 모드와 동일한 앰버 계열 파스텔 배경(`#fef3c7`, 테두리 `#fcd34d`)과 선택(`.active`) 강조 스타일 적용
+    - 수정된 정적 리소스(`styles.css`, `classroom.css`, `mobile-responsive.css`, `app.js`) 캐시 버전을 `?v=20261123.1`로 갱신
+- **검증 결과**:
+  - `node --check app.js`: 구문 오류 없이 정상 통과 (exit code 0)
