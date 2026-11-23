@@ -428,6 +428,23 @@
   padding: 0 8px;
   font-size: 13px;
   font-weight: 600;
+  background: #e8edff;
+  border: 1px solid #c7d2fe;
+  color: #3730a3;
+}
+
+#lesson #attendanceControls button[data-status]:hover:not(.active) {
+  background: #dce3ff;
+  border-color: #a5b4fc;
+  color: #312e81;
+}
+
+#lesson #attendanceControls button[data-status].active {
+  background: #ffffff;
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.18);
 }
 
 #lesson #attendanceControls button[data-attitude-action] {
@@ -437,6 +454,23 @@
   font-size: var(--font-caption);
   letter-spacing: -0.2px;
   font-weight: 600;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  color: #78350f;
+}
+
+#lesson #attendanceControls button[data-attitude-action]:hover:not(.active) {
+  background: #fde68a;
+  border-color: #f59e0b;
+  color: #78350f;
+}
+
+#lesson #attendanceControls button[data-attitude-action].active {
+  background: #ffffff;
+  border-color: #d97706;
+  color: #b45309;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.18);
 }
 
 #lesson #attendanceControls button[data-attitude-action^="all-"] {
